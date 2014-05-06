@@ -1,0 +1,5 @@
+# app/config/routing.yml
+
+GCNAFNAFBundle:
+    resource: "@GCNAFNAFBundle/Resources/config/routing.yml"
+    prefix:   /

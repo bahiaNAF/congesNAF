@@ -1,0 +1,87 @@
+Demande:
+    type: entity
+    table: demande
+    id:
+        idDem:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id_dem
+            generator:
+                strategy: IDENTITY
+    fields:
+        dateD:
+            type: date
+            nullable: false
+            comment: ''
+            column: date_d
+        dateF:
+            type: date
+            nullable: false
+            comment: ''
+            column: date_f
+        nbrJr:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+            column: nbr_jr
+        msg:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+        deMidi:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: de_midi
+        jsqMidi:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: jsq_midi
+        idCng:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: id_cng
+        idEtat:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+            default: a
+            column: id_etat
+        idUser:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: id_user
+        validateur:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+            default: vide
+        dateVal:
+            type: date
+            nullable: false
+            comment: ''
+            column: date_val
+        dateEnrg:
+            type: date
+            nullable: false
+            comment: ''
+            column: date_enrg
+    lifecycleCallbacks: {  }

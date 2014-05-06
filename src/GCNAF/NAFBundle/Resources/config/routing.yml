@@ -1,0 +1,146 @@
+# src/ / /Resources/config/routing.yml
+
+GCNAFNAFBundle_accueil:
+    pattern:  /accueil/
+    defaults: { _controller: GCNAFNAFBundle:Default:login }	
+GCNAFNAFBundle_goout:
+    pattern:  /accueil/goout
+    defaults: { _controller: GCNAFNAFBundle:Deconnect:index }		
+GCNAFNAFBundle_jours:
+    pattern:  /accueil/jours/listerPagination/{page}
+    defaults: { _controller: GCNAFNAFBundle:JoursFeries:listerPagination, page: 1 }	
+GCNAFNAFBundle_jours_searchByear:
+    pattern:  /accueil/jours/searchByYear
+    defaults: { _controller: GCNAFNAFBundle:JoursFeries:searchByYear }	
+GCNAFNAFBundle_ajouter:
+    pattern:  /accueil/jours/ajouter
+    defaults: { _controller: GCNAFNAFBundle:Feries:ajouter }		
+GCNAFNAFBundle_modifier:
+    pattern:  /accueil/jours/modifier/{id}
+    defaults: { _controller: GCNAFNAFBundle:Feries:editer }	
+GCNAFNAFBundle_supprimer:
+    pattern:  /accueil/jours/supprimer/{id}
+    defaults: { _controller: GCNAFNAFBundle:JoursFeries:supprimer }		
+GCNAFNAFBundle_salaries:
+    pattern:  /accueil/salaries/listeRessourcePagination/{page}
+    defaults: { _controller: GCNAFNAFBundle:Ressource:listeRessourcePagination, page: 1  }	
+GCNAFNAFBundle_salaries_ajouter:
+    pattern:  /accueil/salaries/ajouter
+    defaults: { _controller: GCNAFNAFBundle:RessourceForm:ajouter }	
+GCNAFNAFBundle_salaries_modifier:
+    pattern:  /accueil/salaries/modifier/{id}
+    defaults: { _controller: GCNAFNAFBundle:RessourceForm:editer }	
+GCNAFNAFBundle_salaries_supprimer:
+    pattern:  /accueil/salaries/supprimer/{id}
+    defaults: { _controller: GCNAFNAFBundle:Ressource:supprimer }
+GCNAFNAFBundle_salaries_search:
+    pattern:  /accueil/salaries/search
+    defaults: { _controller: GCNAFNAFBundle:Ressource:rechercher }
+GCNAFNAFBundle_chef_equipe:
+    pattern:  /accueil/AffectationSalarie
+    defaults: { _controller: GCNAFNAFBundle:Affectation:index }	
+GCNAFNAFBundle_chef_equipe_supp:
+    pattern:  /accueil/AffectationSalarie/supprimer/{id}
+    defaults: { _controller: GCNAFNAFBundle:Affectation:supprimer }				
+GCNAFNAFBundle_chef_equipe_searchs:
+    pattern:  /accueil/AffectationSalarie/Recherche
+    defaults: { _controller: GCNAFNAFBundle:Affectation:search }
+GCNAFNAFBundle_demandes_conges:
+    pattern:  /accueil/DemandesConges/index/{page}
+    defaults: { _controller: GCNAFNAFBundle:Demandes:index, page: 1}		
+GCNAFNAFBundle_demandes_conges_modifier:
+    pattern:  /accueil/DemandesConges/modifier/{id}
+    defaults: { _controller: GCNAFNAFBundle:Demandes:editer }	
+GCNAFNAFBundle_demandes_conges_supprimer:
+    pattern:  /accueil/DemandesConges/supprimer/{id}
+    defaults: { _controller: GCNAFNAFBundle:Demandes:supprimer }		
+GCNAFNAFBundle_demandes_conges_searchByear:
+    pattern:  /accueil/DemandesConges/searchByYear
+    defaults: { _controller: GCNAFNAFBundle:Demandes:searchByYear }	
+GCNAFNAFBundle_demandes_conges_ajouter:
+    pattern:  /accueil/DemandesConges/ajouter
+    defaults: { _controller: GCNAFNAFBundle:Demandes:ajouter }
+GCNAFNAFBundle_admin_AccorderDemande:
+    pattern:  /accueil/DemandesConges/AccorderDemande/{id}
+    defaults: { _controller: GCNAFNAFBundle:Demandes:AccorderDemande }
+GCNAFNAFBundle_admin_RefuserDemande:
+    pattern:  /accueil/DemandesConges/RefuserDemande/{id}
+    defaults: { _controller: GCNAFNAFBundle:Demandes:RefuserDemande }	
+GCNAFNAFBundle_compteur_solde:
+    pattern:  /accueil/CompteurSolde/index/{page}
+    defaults: { _controller: GCNAFNAFBundle:Solde:index, page: 1  }	
+GCNAFNAFBundle_compteur_solde_searchByear:
+    pattern:  /accueil/CompteurSolde/searchsolde
+    defaults: { _controller: GCNAFNAFBundle:Solde:searchSolde }	
+GCNAFNAFBundle_compteur_solde_modifier:
+    pattern:  /accueil/CompteurSolde/modifier/{id}
+    defaults: { _controller: GCNAFNAFBundle:Solde:editer }	
+GCNAFNAFBundle_compteur_solde_initialiser:
+    pattern:  /accueil/CompteurSolde/initialisation
+    defaults: { _controller: GCNAFNAFBundle:Solde:initialiser }		
+GCNAFNAFBundle_user_simple_demandes:
+    pattern:  /accueil/UtilisateurSimple/demandes/{id}
+    defaults: { _controller: GCNAFNAFBundle:User:demandes }		
+GCNAFNAFBundle_user_simple_recherche:
+    pattern:  /accueil/UtilisateurSimple/SearchDemande
+    defaults: { _controller: GCNAFNAFBundle:User:SearchDemande }		
+GCNAFNAFBundle_user_simple_ajouter:
+    pattern:  /accueil/UtilisateurSimple/ajouter
+    defaults: { _controller: GCNAFNAFBundle:User:ajouter }	
+GCNAFNAFBundle_user_simple_modifier:
+    pattern:  /accueil/UtilisateurSimple/modifier/{id}
+    defaults: { _controller: GCNAFNAFBundle:User:editer }
+GCNAFNAFBundle_user_simple_supprimer:
+    pattern:  /accueil/UtilisateurSimple/supprimer/{id}
+    defaults: { _controller: GCNAFNAFBundle:User:supprimer }
+GCNAFNAFBundle_user_simple_solde:
+    pattern:  /accueil/UtilisateurSimple/index/{page}
+    defaults: { _controller: GCNAFNAFBundle:User:index, page: 1  }	
+GCNAFNAFBundle_user_simple_solde_search:
+    pattern:  /accueil/UtilisateurSimple/searchsolde
+    defaults: { _controller: GCNAFNAFBundle:User:searchSolde }	
+GCNAFNAFBundle_impression_pdf:
+    pattern:  /accueil/UtilisateurSimple/ImpressionFormatPDF
+    defaults: { _controller: GCNAFNAFBundle:Imprimer:ImprimerSolde }
+GCNAFNAFBundle_impression_demande_pdf:
+    pattern:  /accueil/UtilisateurSimple/ImprimerDemande/{id}
+    defaults: { _controller: GCNAFNAFBundle:Imprimer:ImprimerDemande }
+GCNAFNAFBundle_chef_equipe_index:
+    pattern:  /accueil/ChefEquipe/index/{id}
+    defaults: { _controller: GCNAFNAFBundle:Chef:index }
+GCNAFNAFBundle_chef_equipe_search:
+    pattern:  /accueil/ChefEquipe/searchEquipe
+    defaults: { _controller: GCNAFNAFBundle:Chef:searchEquipe }		
+GCNAFNAFBundle_Userequipe_demandes:
+    pattern:  /accueil/ChefEquipe/DemandesUsers/{id}
+    defaults: { _controller: GCNAFNAFBundle:Chef:DemandesUsers }
+GCNAFNAFBundle_Userequipe_demandes_search:
+    pattern:  /accueil/ChefEquipe/DemandeUserParEtat
+    defaults: { _controller: GCNAFNAFBundle:Chef:DemandeUserParEtat }
+GCNAFNAFBundle_chef_AccorderDemande:
+    pattern:  /accueil/ChefEquipe/AccorderDemande/{id}
+    defaults: { _controller: GCNAFNAFBundle:Chef:AccorderDemande }
+GCNAFNAFBundle_chef_RefuserDemande:
+    pattern:  /accueil/ChefEquipe/RefuserDemande/{id}
+    defaults: { _controller: GCNAFNAFBundle:Chef:RefuserDemande }
+GCNAFNAFBundle_chef_equipe_solde:
+    pattern:  /accueil/ChefEquipe/solde/{page}
+    defaults: { _controller: GCNAFNAFBundle:Chef:solde, page: 1  }	
+GCNAFNAFBundle_chef_equipe_solde_search:
+    pattern:  /accueil/ChefEquipe/searchsolde
+    defaults: { _controller: GCNAFNAFBundle:Chef:searchSolde }
+GCNAFNAFBundle_chef_equipe_demandes:
+    pattern:  /accueil/ChefEquipe/demandes/{id}
+    defaults: { _controller: GCNAFNAFBundle:Chef:demandes }	
+GCNAFNAFBundle_chef_equipe_demandes_recherche:
+    pattern:  /accueil/ChefEquipe/SearchDemande
+    defaults: { _controller: GCNAFNAFBundle:Chef:SearchDemande }
+GCNAFNAFBundle_chef_equipe_demandes_modifier:
+    pattern:  /accueil/ChefEquipe/modifier/{id}
+    defaults: { _controller: GCNAFNAFBundle:Chef:editer }
+GCNAFNAFBundle_chef_equipe_demandes_supprimer:
+    pattern:  /accueil/ChefEquipe/supprimer/{id}
+    defaults: { _controller: GCNAFNAFBundle:Chef:supprimer }
+GCNAFNAFBundle_chef_equipe_demandes_ajouter:
+    pattern:  /accueil/ChefEquipe/Ajouter
+    defaults: { _controller: GCNAFNAFBundle:Chef:Ajouter }	

@@ -1,0 +1,53 @@
+{% extends 'GCNAFNAFBundle::layout.html.twig' %}
+{% block title %}Gestion Congés NAF{% endblock %}
+{% block titre %}Espace Administrateur - Gestion Jours Fériés {% endblock %}	
+	{% block menu %}									
+					<div id="menu">
+						<ul>				
+							<li><a href="{{ path('GCNAFNAFBundle_demandes_conges')}}" >Demandes Congés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+						</ul>
+					</div>					
+		<div id="menu3">
+			<ul><li><a href="{{ path('GCNAFNAFBundle_goout')}}"><img src="{{ asset('bundles/gcnafnaf/images/out.jpg') }}" width="108" height="33"></a></li></ul>
+		</div>						
+	{% endblock %}	
+	{% block content %}		
+	
+{% if erreur %}<p><font color="#FF00FF">=>{{ erreur }}:</font></p>{% endif %}	
+	
+<form  method="post" {{ form_enctype(form) }} action="{{ path('GCNAFNAFBundle_jours_searchByear') }}">{{ form_start(form) }}{{ form_errors(form) }}
+<div><pre id="label">Recherche par année {{ form_widget(form.date) }}<input type="submit" value="Go" /></pre>					
+{{ form_errors(form.date) }}</div>{{ form_end(form) }}
+</form><br/>
+
+{% if(total) %}
+			<table border="1" id="tabstl2">
+				<tr>
+						<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Titre    </div></font></td>
+						<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Date     </div></font></td>	
+						<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Modifier </div></font></td>
+						<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Supprimer</div></font></td>
+				</tr>
+{% for a in total %}
+						<tr>
+							<td id="myip">{{ a.libelle }}</td>
+							<td id="myip">{{ a.date|date("Y-m-d") }}</td>	
+							<td id="myip"><a href="{{ path('GCNAFNAFBundle_modifier', { 'id': a.refJf }) }}">							
+							<div align="center"><img src="{{ asset('bundles/gcnafnaf/images/edit.png') }}" title="Modifier" width="12" height="12"></div>
+							</a></td>
+							<td id="myip"><a href="{{ path('GCNAFNAFBundle_supprimer', { 'id': a.refJf }) }}">
+							<div align="center"><img src="{{ asset('bundles/gcnafnaf/images/sup.jpg') }}" title="Supprimer" width="12" height="12"></div>
+							</a></td>
+						</tr>				
+					{% endfor %}
+					</table>
+		{% else %}<img src="{{ asset('bundles/gcnafnaf/images/info.jpg') }}" width="24" height="24"> Aucun jour férié n'a été trouvé dans cette année <br/>
+		{% endif %}					
+		<br/>
+		<p><a href="{{ path('GCNAFNAFBundle_jours') }}">=>Retour à la liste des jours fériés</a></p>	
+
+{% endblock %}

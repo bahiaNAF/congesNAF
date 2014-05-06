@@ -1,0 +1,7 @@
+parameters:
+#    gcnafnaf.example.class: GCNAF\NAFBundle\Example
+
+services:
+#    gcnafnaf.example:
+#        class: %gcnafnaf.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

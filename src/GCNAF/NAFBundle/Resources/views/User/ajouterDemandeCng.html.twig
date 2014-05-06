@@ -1,0 +1,73 @@
+{% extends 'GCNAFNAFBundle::layout.html.twig' %}
+{% block title %}Gestion Congés NAF{% endblock %}
+{% block titre %}Utilisateur simple - {% if nom %}{{ nom }} {% endif %}{% if prenom %}{{ prenom }}{% endif %}{% endblock %}	
+			{% block menu %}									
+					<div id="menu">
+						<ul>
+				<!-- Texte Menu de la page à modifier user index -->
+							<li><a href="{{ path('GCNAFNAFBundle_user_simple_demandes', { 'id': id }) }}">Demandes Congés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_user_simple_solde')}}" >Liste des Soldes</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_goout')}}" class="menu2">Déconnecter</a></li>
+				<!-- Fin Menu de la page à modifier  -->
+						</ul>
+					</div>	
+			{% endblock %}				
+	{% block content %}			
+	<p id="msg"> => L'ajout d'une nouvelle demande d'absence:</p>
+			<div align="left">		
+	{% if erreur %}<p><font color="#FF00FF">{{ erreur }}</font></p>{% endif %}			
+					<form  method="post" {{ form_enctype(form) }}>					
+							{{ form_start(form) }}
+							{{ form_errors(form) }}
+							<table border="0">							
+							<tr>
+								<td id="label">Type de congé</td>
+								<td>
+									{{ form_errors(form.idCng) }}
+									{{ form_widget(form.idCng) }}
+								</td>
+							</tr>														
+							<tr>
+								<td id="label">Date début du congé</td>
+								<td>
+									{{ form_errors(form.dateD) }}
+									{{ form_widget(form.dateD) }}
+								</td>	
+							</tr>																			
+							<tr>
+								<td id="label">à partir de midi</td>
+								<td>
+									{{ form_errors(form.deMidi) }}
+									{{ form_widget(form.deMidi) }}
+								</td>	
+							</tr>
+							<tr>
+								<td id="label">Date fin du congé</td>
+								<td>
+									{{ form_errors(form.dateF) }}
+									{{ form_widget(form.dateF) }}
+								</td>	
+							</tr>																				
+							<tr>
+								<td id="label">jusqu'à midi</td>
+								<td>
+									{{ form_errors(form.jsqMidi) }}
+									{{ form_widget(form.jsqMidi) }}
+								</td>	
+							</tr>
+							
+							<tr>
+								<td id="label">Commentaire</td>
+								<td>
+									{{ form_errors(form.msg) }}
+									{{ form_widget(form.msg) }}
+								</td>	
+							</tr>							
+							</table>												
+						<br/>
+				<pre>      			<input type="submit" value="Ajouter"/> <input type="reset" value="Effacer"/> </pre>						
+						{{ form_end(form) }}					
+				</form>	<br/>
+				<p><a href="{{ path('GCNAFNAFBundle_user_simple_demandes', { 'id': id }) }}">=>Retour à la liste principale</a></p>
+			</div>						
+	{% endblock %}	

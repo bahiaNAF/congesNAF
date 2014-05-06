@@ -1,0 +1,67 @@
+Ressource:
+    type: entity
+    table: ressource
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cin:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        prenom:
+            type: string
+            nullable: false
+            length: 300
+            fixed: false
+            comment: ''
+        login:
+            type: string
+            nullable: false
+            length: 300
+            fixed: false
+            comment: ''
+        pwd:
+            type: string
+            nullable: false
+            length: 300
+            fixed: false
+            comment: ''
+        dateEmb:
+            type: date
+            nullable: false
+            comment: ''
+            column: date_emb
+        dateSor:
+            type: date
+            nullable: false
+            comment: ''
+            column: date_sor
+        mail:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        idProf:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+            column: id_prof
+    lifecycleCallbacks: {  }

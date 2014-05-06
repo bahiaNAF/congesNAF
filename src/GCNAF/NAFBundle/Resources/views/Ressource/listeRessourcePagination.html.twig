@@ -1,0 +1,79 @@
+{% extends 'GCNAFNAFBundle::layout.html.twig' %}
+{% block title %}Gestion Congés NAF{% endblock %}
+{% block titre %}Espace Administrateur - Gestion des Salariés {% endblock %}	
+	{% block menu %}									
+					<div id="menu">
+						<ul>				
+							<li><a href="{{ path('GCNAFNAFBundle_demandes_conges')}}" >Demandes Congés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+						</ul>
+					</div>					
+		<div id="menu3">
+			<ul><li><a href="{{ path('GCNAFNAFBundle_goout')}}"><img src="{{ asset('bundles/gcnafnaf/images/out.jpg') }}" width="108" height="33"></a></li></ul>
+		</div>						
+	{% endblock %}	
+	{% block content %}	
+	
+<p id="msg"> =>Les salariés de Norsys Afrique:</p>	
+
+<form  method="post" {{ form_enctype(form) }} action="{{ path('GCNAFNAFBundle_salaries_search') }}">{{ form_start(form) }}{{ form_errors(form) }}
+<div><pre id="label">{{ form_label(form.nom) }} {{ form_widget(form.nom) }}<input type="submit" value="Go" /></pre>					
+{{ form_errors(form.nom) }}</div>{{ form_end(form) }}</form>
+<br/>
+{% if(entities) %}
+					<table border="1" id="tabstl2">
+					<tr>							
+						<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Nom            </div></font></td>	
+						<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Prénom         </div></font></td>
+						<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Profil         </div></font></td>
+						<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Login          </div></font></td>							
+						<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Date d'embauche</div></font></td>
+						<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Date sortie    </div></font></td>							
+						<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">CIN            </div></font></td>
+						<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Modifier       </div></font></td>
+						<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Supprimer      </div></font></td>
+					</tr>
+{% for a in entities %}						
+<tr>
+<td id="myip">{{ a.nom }}</td><td id="myip">{{ a.prenom }}</td><td id="myip">{{ a.nomProf }}</td>				
+<td id="myip">{{ a.login }}</td><td id="myip">{{ a.dateEmb|date("Y-m-d")}}</td> <td id="myip">{{ a.dateSor|date("Y-m-d")}}</td><td id="myip">{{ a.cin }}</td>  			
+<td> <a href="{{ path('GCNAFNAFBundle_salaries_modifier', { 'id': a.id }) }}">							
+	 <div align="center"> <img src="{{ asset('bundles/gcnafnaf/images/edit.png') }}" title="Modifier" width="12" height="12"> </div> 
+	 </a>
+</td>
+<td> <a href="{{ path('GCNAFNAFBundle_salaries_supprimer', { 'id': a.id }) }}">
+	 <div align="center"> <img src="{{ asset('bundles/gcnafnaf/images/sup.jpg') }}" title="Supprimer" width="12" height="12"> </div>
+	 </a>
+</td>
+</tr>				
+{% endfor %}
+	</table>
+
+{% else %}<br/><img src="{{ asset('bundles/gcnafnaf/images/info.jpg') }}" width="24" height="24"> La liste des utilisateurs est vide!<br/><br/>
+{% endif %}				
+
+{% if last_page > 1 %}
+<a href="{{ path('GCNAFNAFBundle_salaries', { 'page': 1 }) }}"> Début </a> 
+<a href="{{ path('GCNAFNAFBundle_salaries', { 'page': previous_page }) }}"> << </a>	
+	
+{% for page in 1..last_page %}
+	{% if page == current_page %}
+		{{ page }}
+	{% else %}
+<a href="{{ path('GCNAFNAFBundle_salaries', { 'page': page }) }}"> {{ page }} </a>
+	{% endif %}
+{% endfor %}
+
+<a href="{{ path('GCNAFNAFBundle_salaries', { 'page': next_page }) }}">  >> </a> 
+<a href="{{ path('GCNAFNAFBundle_salaries', { 'page': last_page }) }}">  Fin </a>
+ {% endif %}
+<br/><br/>
+<strong>{{ total_articles }}</strong> Salariés dans la page {% if last_page > 1 %} - page <strong>{{ current_page }}/{{ last_page }}</strong>
+										{% endif %} <br/>		
+										
+<p><img src="{{ asset('bundles/gcnafnaf/images/icone_add.gif') }}" width="18" height="18"><a href="{{ path('GCNAFNAFBundle_salaries_ajouter') }}"> Ajouter un Salarié</a></p>
+
+{% endblock %}

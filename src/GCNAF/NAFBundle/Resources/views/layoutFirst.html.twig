@@ -1,0 +1,44 @@
+<html>
+	<head>
+		{% block head %}
+			<!-- META -->
+			<meta content="text/html; charset=utf-8" />			
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+			<meta name="description" content="" />
+			<meta name="author" content="" />
+			<meta name="viewport" content="width=device-width,initial-scale=1" />
+			<title>
+				{% block title %}{% endblock %}
+			</title>				
+			<!-- CSS -->
+			<link rel="stylesheet" href="{{ asset('bundles/gcnafnaf/css/NAFstyle.css') }}" type="text/css" media="all" />
+			<link rel="stylesheet" href="{{ asset('bundles/gcnafnaf/css/css.css') }}" type="text/css" media="all" />																					
+		{% endblock %}	
+	</head>
+{% block baliseBody %} <body> {% endblock %}
+{% block body %}
+
+			<div id="content">			
+				<div id="top">
+					<div id="top_ban">
+			<!-- Texte Titre de la page à modifier  -->
+					<h1>Gestion Congés Norsys Afrique</h1>
+			<!-- Fin Titre de la page à modifier  -->
+					</div>				
+				</div>		
+				{% block menu %}					
+				{% endblock %}	
+				<div id="page">		
+					<h1>{% block titre %}{% endblock %}</h1><br/>					
+					{% block content %}					
+					{% endblock %}
+				</div>				
+				<div id="footer">
+			<!-- Texte Bas de page à modifier  -->
+					@2013-2014 |Norsys Afrique|Gestion congés
+			<!-- Fin Bas de page à modifier  -->
+				</div>				
+			</div>			
+{% endblock %}	<!--End block body-->			
+</body>
+</html>

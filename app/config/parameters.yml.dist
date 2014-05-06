@@ -1,0 +1,14 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: conges_naf
+    database_user: root
+    database_password: null
+    mailer_transport: gmail
+    mailer_host: 127.0.0.1
+    mailer_user: gcnaf2014@gmail.com
+    mailer_password: MDP2norsys
+    locale: fr
+    secret: ec955d8fc7e6623a24683836cdec8cdee1681ee0
+    database_path: null

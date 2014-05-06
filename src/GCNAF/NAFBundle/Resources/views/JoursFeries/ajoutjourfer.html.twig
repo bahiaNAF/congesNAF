@@ -1,0 +1,49 @@
+{% extends 'GCNAFNAFBundle::layout.html.twig' %}
+{% block title %}Gestion Congés NAF{% endblock %}
+{% block titre %}Espace Administrateur - Gestion Jours Fériés {% endblock %}	
+	{% block menu %}									
+					<div id="menu">
+						<ul>				
+							<li><a href="{{ path('GCNAFNAFBundle_demandes_conges')}}" >Demandes Congés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+						</ul>
+					</div>					
+		<div id="menu3">
+			<ul><li><a href="{{ path('GCNAFNAFBundle_goout')}}"><img src="{{ asset('bundles/gcnafnaf/images/out.jpg') }}" width="108" height="33"></a></li></ul>
+		</div>						
+	{% endblock %}
+	
+	{% block content %}			
+	<p id="msg"> => L'ajout des jours fériés :</p>
+			<div align="center">														
+					<form  method="post" {{ form_enctype(form) }}>						
+							{{ form_start(form) }}
+							{{ form_errors(form) }}
+							<table border="0">
+							<tr>
+								<td id="label">{{ form_label(form.idProjet) }}</td>
+								<td>							
+									{{ form_errors(form.idProjet) }}
+									{{ form_widget(form.idProjet) }}
+								</td>	
+							</tr>
+							<tr>
+								<td id="label">{{ form_label(form.date) }}</td>
+								<td>
+									{{ form_errors(form.date) }}
+									{{ form_widget(form.date) }}
+								</td>
+							</tr>
+							</table>													
+						<br/>
+						<pre>   	<input type="submit" value="Ajouter"/> <input type="reset" value="Annuler"/> </pre>						
+						{{ form_end(form) }}					
+				</form>	<br/>							
+			</div>			
+<p><a href="{{ path('GCNAFNAFBundle_jours') }}">=>Retour à la liste des jours fériés</a></p>			
+	{% endblock %}
+		
+		

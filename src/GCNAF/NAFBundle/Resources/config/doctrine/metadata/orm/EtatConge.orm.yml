@@ -1,0 +1,23 @@
+EtatConge:
+    type: entity
+    table: etat_conge
+    id:
+        idEtat:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+            id: true
+            column: id_etat
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomEtat:
+            type: string
+            nullable: false
+            length: 120
+            fixed: false
+            comment: ''
+            column: nom_etat
+    lifecycleCallbacks: {  }

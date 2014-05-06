@@ -1,0 +1,23 @@
+Profil:
+    type: entity
+    table: profil
+    id:
+        idProf:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+            id: true
+            column: id_prof
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomProf:
+            type: string
+            nullable: false
+            length: 120
+            fixed: false
+            comment: ''
+            column: nom_prof
+    lifecycleCallbacks: {  }

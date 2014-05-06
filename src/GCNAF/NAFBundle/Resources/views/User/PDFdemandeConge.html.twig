@@ -1,0 +1,51 @@
+<html>
+	<head>		
+			<!-- META -->
+			<meta content="text/html; charset=utf-8" />			
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+			<meta name="description" content="" />
+			<meta name="author" content="" />
+			<meta name="viewport" content="width=device-width,initial-scale=1" />
+			
+			<title>Gestion Congés NAF - Formulaire de demande congés</title>				
+			
+			<!-- CSS -->
+			<link href="bundles/gcnafnaf/css/NAFstyle.css" rel="stylesheet" type="text/css" />
+			<link href="bundles/gcnafnaf/css/css.css" rel="stylesheet" type="text/css" />			
+	</head>
+<body>
+<br/>
+			<div id="content">			
+				<div id="top">
+					<div id="top_banPDF">			
+					<h2> Gestion Congés Norsys Afrique </h2>			
+					</div>				
+				</div>							
+				<div id="page">			
+					<div align="center"><h3>Formulaire de demande de congés </h3></div><br/>
+	
+	<p>Nom    :<strong>{% if nom %}{{ nom }} {% endif %}       </strong></p>
+	<p>Prénom :<strong>{% if prenom %}{{ prenom }} {% endif %} </strong></p>
+	<p>Demande a bénéficier d'une autorisation d'absence au titre de :<strong> {{ nomCnge }}</strong> </p>
+	<p>Motif/Commentaire: <strong> {{ msg }}</strong></p>									
+	<p>Date de début du congé: <strong> {{ dateD|date("Y-m-d")}} </strong>  De midi: {% if demidi==1 %} <strong>X</strong>
+																					{% else %}         <input type="checkbox" name="Demidi">
+																					{% endif %}</p>									
+	<p>Date de fin  du  congé  : <strong> {{ dateF|date("Y-m-d")}} </strong>  Jusqu'a midi:
+																			{% if(amidi)==1 %} <strong>X</strong>
+																			{% else %}         <input type="checkbox" name="jsq">
+																			{% endif %}</p>
+	<p>Nombre de jours ouvrés de l'absence  : <strong> {{nbjours }} jour(s)</strong></p>									
+						
+		<br/><br/><br/>	
+		
+		<pre> 	 <p> Signature 						A.............Le..........</p> </pre>		
+		<br/><br/><br/><br/>
+				</div>				
+				
+				<div id="footer" align="center">			
+					@2013-2014 |Norsys Afrique|Gestion congés			
+				</div>				
+			</div>					
+</body>
+</html>

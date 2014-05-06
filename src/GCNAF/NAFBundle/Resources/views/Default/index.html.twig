@@ -1,0 +1,29 @@
+{% extends 'GCNAFNAFBundle::layoutFirst.html.twig' %}
+{% block title %}Gestion Congés NAF{% endblock %}
+{% block titre %}Se connecter {% endblock %}	
+	{% block content %}		
+	<div align="center">	
+				{% if message %}				
+				<p id="msg">{{ message }}</p>
+				{% endif %}	<br/>											
+				<form class="box login" method="post" {{ form_enctype(form) }}>					
+					{{ form_start(form) }}{{ form_errors(form) }}	
+					
+					<fieldset class="boxBody">					
+						{{ form_label(form.login) }}						
+						{{ form_errors(form.login) }}
+						{{ form_widget(form.login) }}
+												
+						{{ form_label(form.pwd) }}
+						{{ form_errors(form.pwd) }}
+						{{ form_widget(form.pwd) }}										  
+					</fieldset>
+					
+					<footer>
+						<label><input type="checkbox" tabindex="3">Rester connecté</label>
+						<input type="submit" class="btnLogin" value="Login" tabindex="4">					
+					</footer>					
+					{{ form_end(form) }}						
+				</form>	
+	</div>		
+	{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'GCNAFNAFBundle::layout.html.twig' %}
+{% block title %}Gestion Congés NAF{% endblock %}
+{% block titre %}Espace Administrateur - Gestion des Salariés {% endblock %}	
+	{% block menu %}									
+					<div id="menu">
+						<ul>				
+							<li><a href="{{ path('GCNAFNAFBundle_demandes_conges')}}" >Demandes Congés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+						</ul>
+					</div>					
+		<div id="menu3">
+			<ul><li><a href="{{ path('GCNAFNAFBundle_goout')}}"><img src="{{ asset('bundles/gcnafnaf/images/out.jpg') }}" width="108" height="33"></a></li></ul>
+		</div>						
+	{% endblock %}
+	
+	{% block content %}			
+	<p id="msg"> => Modifier les informations d'un salarié: </p>
+			<div align="center">							
+				{% if message %}<p><font color="#FF00FF">{{ message }}</font></p>{% endif %}					
+					<form  method="post" {{ form_enctype(form) }}>					
+								{{ form_start(form) }}
+								{{ form_errors(form) }}
+							<div>
+							<pre id="label">{{ form_label(form.cin) }}	   {{ form_widget(form.cin) }}</pre>					
+								{{ form_errors(form.cin) }}																
+							</div>
+						<br/>
+							<div>
+							<pre id="label">{{ form_label(form.nom) }}        {{ form_widget(form.nom) }}</pre>
+								{{ form_errors(form.nom) }}								
+							</div>
+							<br/>							
+							<div>
+							<pre id="label">{{ form_label(form.prenom) }}     {{ form_widget(form.prenom) }}</pre>
+							{{ form_errors(form.prenom) }}																					
+							</div>						
+						<br/>
+							<div>
+							<pre id="label">{{ form_label(form.login) }}      {{ form_widget(form.login) }}</pre>
+								{{ form_errors(form.login) }}								
+							</div>
+							<br/>
+							<div>
+							<pre id="label">{{ form_label(form.pwd) }}   {{ form_widget(form.pwd) }}</pre>					
+								{{ form_errors(form.pwd) }}															
+							</div>
+						<br/>
+						<table border="0">
+							<tr>
+								<td id="label">{{ form_label(form.dateEmb) }}</td>
+								<td>							
+									{{ form_errors(form.dateEmb) }}
+									{{ form_widget(form.dateEmb) }}
+								</td>	
+							</tr>
+							<tr>
+								<td id="label">{{ form_label(form.dateSor) }}</td>
+								<td>
+									{{ form_errors(form.dateSor) }}
+									{{ form_widget(form.dateSor) }}
+								</td>
+							</tr>
+						</table>
+						<br/>
+							<div>
+							<pre id="label">{{ form_label(form.mail) }}       {{ form_widget(form.mail) }}</pre>
+								{{ form_errors(form.mail) }}								
+							</div>
+							<br/>
+							<div>
+							<pre id="label">{{ form_label(form.idProf) }}         {{ form_widget(form.idProf) }}</pre>
+								{{ form_errors(form.idProf) }}								
+							</div>						
+						<br/>
+						
+							<pre> 	 <input type="submit" value="Modifier"/>  <input type="reset" value="Effacer"/></pre>						
+						{{ form_end(form) }}					
+				</form>	<br/>					
+			</div>			
+<p><a href="{{ path('GCNAFNAFBundle_salaries') }}">=>Retour à la liste des salariés</a></p>				
+	{% endblock %}		

@@ -1,0 +1,60 @@
+<html>
+	<head>		
+			<!-- META -->
+			<meta content="text/html; charset=utf-8" />			
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+			<meta name="description" content="" />
+			<meta name="author" content="" />
+			<meta name="viewport" content="width=device-width,initial-scale=1" />
+			
+			<title>Gestion Congés NAF - Impression de la liste des soldes d'un utilisateur simple.</title>				
+			
+			<!-- CSS -->
+			<link href="bundles/gcnafnaf/css/NAFstyle.css" rel="stylesheet" type="text/css" />
+			<link href="bundles/gcnafnaf/css/css.css" rel="stylesheet" type="text/css" />			
+	</head>
+<body>
+<br/>
+			<div id="content">			
+				<div id="top">
+					<div id="top_banPDF">
+			
+					<h2> Gestion Congés Norsys Afrique </h2>
+			
+					</div>				
+				</div>		
+					
+				<div id="page">		
+					<p>Nom et Prénom :<h3>{% if nom %}{{ nom }} {% endif %}{% if prenom %}{{ prenom }}{% endif %}</h3> </p><br/>										
+					<p id="msg"><font color="#CC0000"> => La liste des Soldes </font></p>	
+					<br/>
+{% if(entities) %}
+<br/>
+					<table border="1" width="200">
+					<tr>														
+							<td><font color="#CC0000"><div align="center" id="myip">Période        </div></font></td>
+							<td><font color="#CC0000"><div align="center" id="myip">Solde Initial  </div></font></td>
+							<td><font color="#CC0000"><div align="center" id="myip">Compteur Solde </div></font></td>																																							
+					</tr>
+{% for a in entities %}						
+					<tr>						
+						<td id="myip">{{ a.annee}}</td>
+						<td id="myip">{{ a.cptInitial}}</td>				
+						<td id="myip">{{ a.cptSolde}}</td>																						
+					</tr>				
+{% endfor %}
+					</table>
+		{% else %}<br/>Il faut inisialiser votre compteur des soldes<br/>
+		{% endif %}
+		<br/><br/>	
+		
+		<pre> 	<p> Signature 						A.............Le........</p> </pre>		
+		<br/><br/>
+				</div>				
+				
+				<div id="footer" align="center">			
+					@2013-2014 |Norsys Afrique|Gestion congés			
+				</div>				
+			</div>					
+</body>
+</html>

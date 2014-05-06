@@ -1,0 +1,29 @@
+TypesConges:
+    type: entity
+    table: types_conges
+    id:
+        idTypes:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id_types
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomCng:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+            column: nom_cng
+        dureeMax:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+            column: duree_max
+    lifecycleCallbacks: {  }

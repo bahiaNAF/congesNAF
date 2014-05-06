@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Mail de réponse à une demande de congés NAF</title>
+<style type="text/css">
+<!--
+.Style1 {color: #FF0000}
+-->
+</style>
+</head>
+<body>
+Bonjour <strong>{% if nom %}{{ nom }} {% endif %}{% if prenom %}{{ prenom }}{% endif %}</strong>,
+
+<br/>
+{% if etatfinalecng == 'v' %}
+<font face="Times New Roman, Times, serif"><p>Votre demande de congé à été validée par <strong>{% if ValidateurNom %}{{ ValidateurNom }} {% endif %}{% if ValidateurPren %}{{ ValidateurPren }}{% endif %}</strong>,
+{% endif %}
+{% if etatfinalecng == 'r' %}
+<font face="Times New Roman, Times, serif"><p>Votre demande de congé à été refusée par <strong>{% if ValidateurNom %}{{ ValidateurNom }} {% endif %}{% if ValidateurPren %}{{ ValidateurPren }}{% endif %}</strong>,
+{% endif %}
+{% if etatfinalecng == 'a' %}
+<font face="Times New Roman, Times, serif"><p>Votre demande de congé est encore en attente de validation.
+{% endif %}
+<br/>
+Pour plus d'informations consulter votre application de gestion de congés NAF, ou contacter votre directeur sans aucune réponse en retour à ce mail. </p></font>
+
+<p>Cordialement.</p>
+   Norsys Afrique
+
+</body>
+</html>

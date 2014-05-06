@@ -1,0 +1,41 @@
+EquipeChef:
+    type: entity
+    table: equipe_chef
+    id:
+        ref:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dateF:
+            type: date            
+            comment: ''
+            column: date_f
+        projet:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        idSalarie:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: id_salarie
+        idChef:
+            type: string
+            nullable: false
+            length: 350
+            fixed: false
+            comment: ''
+            column: id_chef
+        dateD:
+            type: date
+            nullable: false
+            comment: ''
+            column: date_d
+    lifecycleCallbacks: {  }

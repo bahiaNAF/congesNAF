@@ -1,0 +1,60 @@
+{% extends 'GCNAFNAFBundle::layout.html.twig' %}
+{% block title %}Gestion Congés NAF{% endblock %}
+{% block titre %}Utilisateur simple - {% if nom %}{{ nom }} {% endif %}{% if prenom %}{{ prenom }}{% endif %}{% endblock %}	
+			{% block menu %}									
+					<div id="menu">
+						<ul>
+				<!-- Texte Menu de la page à modifier user index -->
+							<li><a href="{{ path('GCNAFNAFBundle_user_simple_demandes', { 'id': id }) }}">Demandes Congés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_user_simple_solde')}}" >Liste des Soldes</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_goout')}}" class="menu2">Déconnecter</a></li>
+				<!-- Fin Menu de la page à modifier  -->
+						</ul>
+					</div>	
+			{% endblock %}	
+	{% block content %}			
+<a href="{{ path('GCNAFNAFBundle_impression_pdf')}}"><img src="{{ asset('bundles/gcnafnaf/images/iconpdf.jpg')}}" title="Imprimer la liste des soldes" width="25" height="25"></a>
+
+<p id="msg"> => La liste des Soldes:</p>	
+{% if(entities) %}
+
+<form  method="post" {{ form_enctype(form) }} action="{{ path('GCNAFNAFBundle_user_simple_solde_search') }}">{{ form_start(form) }}{{ form_errors(form) }}
+<div><pre id="label">Recherche par année {{ form_widget(form.annee) }} <input type="submit" value="Go" /></pre>					
+{{ form_errors(form.annee) }}</div>{{ form_end(form) }}
+</form>
+<br/><br/>
+					<table border="1" width="500" id="tabcssuser">
+					<tr>														
+							<td bgcolor="#CCFFFF"><font color="#CC0000"><div align="center" id="myip">Période        </div></font></td>
+							<td bgcolor="#CCFFFF"><font color="#CC0000"><div align="center" id="myip">Solde Initial  </div></font></td>
+							<td bgcolor="#CCFFFF"><font color="#CC0000"><div align="center" id="myip">Compteur Solde </div></font></td>																																							
+					</tr>
+{% for a in entities %}						
+					<tr>						
+						<td id="myip">{{ a.annee}}</td>
+						<td id="myip">{{ a.cptInitial}}</td>				
+						<td id="myip">{{ a.cptSolde}}</td>																						
+					</tr>				
+{% endfor %}
+					</table>
+		{% else %}<br/><img src="{{ asset('bundles/gcnafnaf/images/info.jpg') }}" width="24" height="24"> Il faut inisialiser votre compteur des soldes!<br/>
+		{% endif %}		
+{% if last_page > 1 %}
+<a href="{{ path('GCNAFNAFBundle_user_simple_solde', { 'page': 1 }) }}"> Début </a> 
+<a href="{{ path('GCNAFNAFBundle_user_simple_solde', { 'page': previous_page }) }}"> << </a>	
+	
+{% for page in 1..last_page %}
+	{% if page == current_page %}
+		{{ page }}
+	{% else %}
+<a href="{{ path('GCNAFNAFBundle_user_simple_solde', { 'page': page }) }}"> {{ page }} </a>
+	{% endif %}
+{% endfor %}
+
+<a href="{{ path('GCNAFNAFBundle_user_simple_solde', { 'page': next_page }) }}">  >> </a> 
+<a href="{{ path('GCNAFNAFBundle_user_simple_solde', { 'page': last_page }) }}">  Fin </a>
+ {% endif %}
+<br/>
+<strong>{{ total_articles }}</strong> lignes dans la page {% if last_page > 1 %} - page <strong>{{ current_page }}/{{ last_page }}</strong>
+										{% endif %}
+	{% endblock %}

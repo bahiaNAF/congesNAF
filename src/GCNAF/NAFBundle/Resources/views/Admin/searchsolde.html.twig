@@ -1,0 +1,56 @@
+{% extends 'GCNAFNAFBundle::layout.html.twig' %}
+{% block title %}Gestion Congés NAF{% endblock %}
+{% block titre %}Espace Administrateur - Gestion Soldes{% endblock %}	
+	{% block menu %}									
+					<div id="menu">
+						<ul>				
+							<li><a href="{{ path('GCNAFNAFBundle_demandes_conges')}}" >Demandes Congés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+						</ul>
+					</div>					
+		<div id="menu3">
+			<ul><li><a href="{{ path('GCNAFNAFBundle_goout')}}"><img src="{{ asset('bundles/gcnafnaf/images/out.jpg') }}" width="108" height="33"></a></li></ul>
+		</div>						
+	{% endblock %}		
+	{% block content %}			
+	
+{% if erreur %}<p><font color="#FF00FF">=>{{ erreur }}:</font></p>{% endif %}
+	
+<form  method="post" {{ form_enctype(form) }} action="{{ path('GCNAFNAFBundle_compteur_solde_searchByear') }}">{{ form_start(form) }}{{ form_errors(form) }}
+<div><pre id="label">Recherche par année {{ form_widget(form.annee) }}<input type="submit" value="Go" /></pre>					
+{{ form_errors(form.annee) }}</div>{{ form_end(form) }}
+</form>
+<br/>				
+{% if total2 %}
+
+					<table border="1"  width="500" id="tabstl2">
+					<tr>							
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Salarié        </div></font></td>	
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Période        </div></font></td>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Solde Initial  </div></font></td>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Compteur Solde </div></font></td>							
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Modifier       </div></font></td>														
+					</tr>
+{% for a in total2 %}						
+					<tr>
+						<td id="myip">{{ a.nom}} {{a.prenom}}</td>
+						<td id="myip">{{ a.annee}}</td>
+						<td id="myip">{{ a.cptInitial}}</td>				
+						<td id="myip">{{ a.cptSolde}}</td>										
+						<td> <a href="{{ path('GCNAFNAFBundle_compteur_solde_modifier', { 'id': a.refCpt }) }}">							
+							 <div align="center"> <img src="{{ asset('bundles/gcnafnaf/images/edit.png') }}" title="Modifier" width="12" height="12"> </div> 
+							 </a>
+						</td>							
+					</tr>			
+{% endfor %}
+					</table>
+		{% else %}<br/><img src="{{ asset('bundles/gcnafnaf/images/info.jpg') }}" width="24" height="24"> Aucun résultat trouvé!<br/><br/>					
+		{% endif %}					
+		<p> 			
+		=> <a href="{{ path('GCNAFNAFBundle_compteur_solde_initialiser') }}">Initialisation</a><br/>
+		=> <a href="{{ path('GCNAFNAFBundle_compteur_solde') }}">Retour à la liste des soldes</a>
+		</p>		
+	{% endblock %}

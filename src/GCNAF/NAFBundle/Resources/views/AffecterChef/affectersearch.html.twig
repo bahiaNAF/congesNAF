@@ -1,0 +1,56 @@
+{% extends 'GCNAFNAFBundle::layout.html.twig' %}
+{% block title %}Gestion Congés NAF{% endblock %}
+{% block titre %}Espace Administrateur - L'Affectation des Salariés {% endblock %}	
+	{% block menu %}									
+					<div id="menu">
+						<ul>				
+							<li><a href="{{ path('GCNAFNAFBundle_demandes_conges')}}" >Demandes Congés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+						</ul>
+					</div>					
+		<div id="menu3">
+			<ul><li><a href="{{ path('GCNAFNAFBundle_goout')}}"><img src="{{ asset('bundles/gcnafnaf/images/out.jpg') }}" width="108" height="33"></a></li></ul>
+		</div>						
+	{% endblock %}
+	
+	{% block content %}	
+<p id="msg"> => Liste Salarié-Chef d'équipe [Résultats de votre recherche]</p>
+	
+<form  method="post" {{ form_enctype(formSearch) }} action="{{ path('GCNAFNAFBundle_chef_equipe_searchs') }}">{{ form_start(formSearch) }}{{ form_errors(formSearch) }}
+<div><pre id="label">{{ form_label(formSearch.idSalarie) }} {{ form_widget(formSearch.idSalarie) }}<input type="submit" value="Go" /></pre>					
+{{ form_errors(formSearch.idSalarie) }}</div>{{ form_end(formSearch) }}
+</form>	
+
+{% if total %}
+<br/>
+					<table border="1" id="tabstl2">
+					<tr>							
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Salarié  </div></font></td>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Chef d'équipe </div></font></td>	
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Date appartenance </div></font></td>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Date Fin</div></font></td>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Projet</div></font></td>
+					</tr>
+{% for entity in total %}						
+						<tr>
+							<td id="myip">{{ entity.nom}} {{ entity.prenom}}</td>
+							<td id="myip">{{ entity.idChef}} </td>							
+							<td id="myip">{{ entity.dateD|date("Y-m-d")}}</td>	
+						{% if (entity.dateF)==NULL %}
+							<td id="myip">NULL</td>	
+						{% else %}
+							<td id="myip">{{ entity.dateF|date("Y-m-d")}}</td>	
+						{% endif %}
+							<td id="myip">{{ entity.projet}}</td>														
+						</tr>						
+{% endfor %}
+					</table>
+		{% else %}<br/><img src="{{ asset('bundles/gcnafnaf/images/info.jpg') }}" width="24" height="24">  Ce salarié n'est pas encore affecté !<br/><br/>					
+		{% endif %}					
+		<p>
+		=> <a href="{{ path('GCNAFNAFBundle_chef_equipe') }}">Retour à la liste précédente</a><br/>		
+		</p>							
+	{% endblock %}

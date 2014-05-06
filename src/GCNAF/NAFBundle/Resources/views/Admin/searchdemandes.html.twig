@@ -1,0 +1,70 @@
+{% extends 'GCNAFNAFBundle::layout.html.twig' %}
+{% block title %}Gestion Congés NAF{% endblock %}
+{% block titre %}Espace Administrateur - Demandes Congés{% endblock %}	
+	{% block menu %}									
+					<div id="menu">
+						<ul>				
+							<li><a href="{{ path('GCNAFNAFBundle_demandes_conges')}}" >Demandes Congés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+						</ul>
+					</div>					
+		<div id="menu3">
+			<ul><li><a href="{{ path('GCNAFNAFBundle_goout')}}"><img src="{{ asset('bundles/gcnafnaf/images/out.jpg') }}" width="108" height="33"></a></li></ul>
+		</div>						
+	{% endblock %}	
+	{% block content %}	
+	
+{% if erreur %}<p><font color="#FF00FF">=>{{ erreur }}:</font></p>{% endif %}	
+	
+<form  method="post" {{ form_enctype(form) }} action="{{ path('GCNAFNAFBundle_demandes_conges_searchByear') }}">{{ form_start(form) }}{{ form_errors(form) }}
+<div><pre id="label">Recherche par année  {{ form_widget(form.dateEnrg) }}<input type="submit" value="Go" /></pre>					
+{{ form_errors(form.dateEnrg) }}</div>{{ form_end(form) }}</form>
+<br/>	
+{% if total %}
+					<table border="1" width="775" id="tabstl2">
+					<tr>							
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Salarié        </div></font></td>	
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Congé          </div></font></td>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Date début     </div></font></td>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Date fin       </div></font></td>							
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Date création  </div></font></td>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Message        </div></font></td>							
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Validateur     </div></font></td>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Etat           </div></font></td>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Validation     </div></font></td>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Supprimer      </div></font></td>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Pdf			 </div></font></td>
+					</tr>
+{% for a in total %}						
+					<tr>
+						<td id="myip">{{ a.nom}} {{a.prenom}}</td>
+						<td id="myip">{{ a.nomCng|truncate(40, true, '...')}}</td>
+						<td id="myip">{{ a.dateD|date("Y-m-d")}}</td>				
+						<td id="myip">{{ a.dateF|date("Y-m-d")}}</td>
+						<td id="myip">{{ a.dateEnrg|date("Y-m-d") }}</td>
+						<td id="myip">{{ a.msg|truncate(100, true, '...') }}</td>
+						<td id="myip">{{ a.validateur }}</td> 
+						<td id="myip">{{ a.nomEtat }}</td> 						
+						<td> 
+<pre><a href="{{ path('GCNAFNAFBundle_admin_AccorderDemande', { 'id': a.idDem }) }}">Accorder</a> <a href="{{ path('GCNAFNAFBundle_admin_RefuserDemande', { 'id': a.idDem }) }}">Réfuser</a> </pre>
+						</td>
+						<td> <a href="{{ path('GCNAFNAFBundle_demandes_conges_supprimer', { 'id': a.idDem }) }}">							
+							 <div align="center"><img src="{{ asset('bundles/gcnafnaf/images/sup.jpg') }}" title="Supprimer" width="10" height="10"></div>
+							 </a>
+						</td>
+						<td> <a href="{{ path('GCNAFNAFBundle_impression_demande_pdf', { 'id': a.idDem }) }}">							
+<div align="center"><img src="{{ asset('bundles/gcnafnaf/images/iconpdf.jpg') }}" title="Imprimer le formulaire de demande de congé" width="20" height="20"></div>
+					 </a>
+						</td>	
+					</tr>	
+{% endfor %}
+					</table>
+		{% else %}<br/><img src="{{ asset('bundles/gcnafnaf/images/info.jpg') }}" width="24" height="24"> Aucun résultat n'a été trouvé!
+		{% endif %}	
+		<p><br/></p>
+		<p><a href="{{ path('GCNAFNAFBundle_demandes_conges') }}"> =>Retour à la liste des demandes</a></p>					
+		
+	{% endblock %}

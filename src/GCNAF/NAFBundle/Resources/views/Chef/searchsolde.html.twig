@@ -1,0 +1,45 @@
+{% extends 'GCNAFNAFBundle::layout.html.twig' %}
+{% block title %}Gestion Congés NAF{% endblock %}
+{% block titre %}Espace d'un chef d'équipe - {% if nom %}{{ nom }} {% endif %}{% if prenom %}{{ prenom }}{% endif %}{% endblock %}	
+			{% block menu %}									
+					<div id="menu">
+						<ul>
+				<!-- Texte Menu de la page à modifier user index -->
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe_index', { 'id': id }) }}">Accueil</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe_demandes', { 'id': id }) }}">Demandes Congés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe_solde')}}" >Liste des Soldes</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_goout')}}" class="menu2">Déconnecter</a></li>
+				<!-- Fin Menu de la page à modifier  -->
+						</ul>
+					</div>
+			{% endblock %}	
+	{% block content %}		
+<p id="msg"> => Résultats de votre recherche</p>	
+	
+<form  method="post" {{ form_enctype(form) }} action="{{ path('GCNAFNAFBundle_chef_equipe_solde_search') }}">{{ form_start(form) }}{{ form_errors(form) }}
+<div><pre id="label">Recherche par année {{ form_widget(form.annee) }} <input type="submit" value="Go" /></pre>					
+{{ form_errors(form.annee) }}</div>{{ form_end(form) }}
+</form>
+
+{% if(entities) %}
+<br/>
+					<table border="1" width="500">
+					<tr>														
+							<td bgcolor="#CCFFFF"><font color="#CC0000"><div align="center" id="myip">Période         </div></font></td>
+							<td bgcolor="#CCFFFF"><font color="#CC0000"><div align="center" id="myip">Solde Initial  </div></font></td>
+							<td bgcolor="#CCFFFF"><font color="#CC0000"><div align="center" id="myip">Compteur Solde </div></font></td>																																							
+					</tr>
+{% for a in entities %}						
+					<tr>						
+						<td id="myip">{{ a.annee}}</td>
+						<td id="myip">{{ a.cptInitial}}</td>				
+						<td id="myip">{{ a.cptSolde}}</td>																						
+					</tr>				
+{% endfor %}
+					</table>
+		{% else %}<br/><img src="{{ asset('bundles/gcnafnaf/images/info.jpg') }}" width="24" height="24"> Aucun résultat trouvé..! <br/><br/>	
+		{% endif %}		
+		<p> 					
+		=> <a href="{{ path('GCNAFNAFBundle_chef_equipe_solde') }}">Retour à la liste des soldes</a>
+		</p>
+	{% endblock %}

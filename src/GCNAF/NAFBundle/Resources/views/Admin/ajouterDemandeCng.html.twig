@@ -1,0 +1,86 @@
+{% extends 'GCNAFNAFBundle::layout.html.twig' %}
+{% block title %}Gestion Congés NAF{% endblock %}
+{% block titre %}Espace Administrateur-Demandes Congés{% endblock %}	
+	{% block menu %}									
+					<div id="menu">
+						<ul>				
+							<li><a href="{{ path('GCNAFNAFBundle_demandes_conges')}}" >Demandes Congés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+						</ul>
+					</div>					
+		<div id="menu3">
+			<ul><li><a href="{{ path('GCNAFNAFBundle_goout')}}"><img src="{{ asset('bundles/gcnafnaf/images/out.jpg') }}" width="108" height="33"></a></li></ul>
+		</div>						
+	{% endblock %}
+	
+	{% block content %}			
+	<p id="msg"> => Ajouter une demande de congé :</p>
+			<div align="left">		
+	{% if erreur %}<p><font color="#FF00FF">{{ erreur }}</font></p>{% endif %}			
+					<form  method="post" {{ form_enctype(form) }}>					
+							{{ form_start(form) }}
+							{{ form_errors(form) }}
+							<table border="0">
+							<tr>
+								<td id="label">L'Administrateur</td>
+								<td>							
+									{{ form_errors(form.idUser) }}
+									{{ form_widget(form.idUser) }}
+								</td>	
+							</tr>	
+							
+							<tr>
+								<td id="label">Type de congé</td>
+								<td>
+									{{ form_errors(form.idCng) }}
+									{{ form_widget(form.idCng) }}
+								</td>
+							</tr>														
+							<tr>
+								<td id="label">Date début du congé</td>
+								<td>
+									{{ form_errors(form.dateD) }}
+									{{ form_widget(form.dateD) }}
+								</td>	
+							</tr>																			
+							<tr>
+								<td id="label">à partir de midi</td>
+								<td>
+									{{ form_errors(form.deMidi) }}
+									{{ form_widget(form.deMidi) }}
+								</td>	
+							</tr>
+							<tr>
+								<td id="label">Date fin du congé</td>
+								<td>
+									{{ form_errors(form.dateF) }}
+									{{ form_widget(form.dateF) }}
+								</td>	
+							</tr>																				
+							<tr>
+								<td id="label">jusqu'à midi</td>
+								<td>
+									{{ form_errors(form.jsqMidi) }}
+									{{ form_widget(form.jsqMidi) }}
+								</td>	
+							</tr>
+							
+							<tr>
+								<td id="label">Commentaire</td>
+								<td>
+									{{ form_errors(form.msg) }}
+									{{ form_widget(form.msg) }}
+								</td>	
+							</tr>
+							
+							</table>												
+						<br/>
+				<pre>      			<input type="submit" value="Ajouter"/> <input type="reset" value="Effacer"/> </pre>						
+						{{ form_end(form) }}					
+				</form>	<br/>
+				<p><a href="{{ path('GCNAFNAFBundle_demandes_conges') }}">=>Retour à la liste des demandes</a></p>			
+			</div>						
+	{% endblock %}	

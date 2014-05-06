@@ -1,0 +1,73 @@
+{% extends 'GCNAFNAFBundle::layout.html.twig' %}
+{% block title %}Gestion Congés NAF{% endblock %}
+{% block titre %}Espace Administrateur - Gestion Jours Fériés {% endblock %}	
+	{% block menu %}									
+					<div id="menu">
+						<ul>				
+							<li><a href="{{ path('GCNAFNAFBundle_demandes_conges')}}" >Demandes Congés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+						</ul>
+					</div>					
+		<div id="menu3">
+			<ul><li><a href="{{ path('GCNAFNAFBundle_goout')}}"><img src="{{ asset('bundles/gcnafnaf/images/out.jpg') }}" width="108" height="33"></a></li></ul>
+		</div>						
+	{% endblock %}
+	
+	{% block content %}	
+	
+<p id="msg"> => Liste des Jours Fériés :</p>
+	
+<form  method="post" {{ form_enctype(form) }} action="{{ path('GCNAFNAFBundle_jours_searchByear') }}">{{ form_start(form) }}{{ form_errors(form) }}
+<div><pre id="label">Recherche par année {{ form_widget(form.date) }}<input type="submit" value="Go" /></pre>					
+{{ form_errors(form.date) }}</div>{{ form_end(form) }}</form>
+
+{% if entities %}			
+<br/>			
+				<table border="1" id="tabstl2">
+					<tr>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Titre    </div></font></td>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Date     </div></font></td>	
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Modifier </div></font></td>
+							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Supprimer</div></font></td>
+					</tr>
+					{% for entity in entities %}
+						<tr>
+							<td id="myip">{{ entity.libelle }}</td>
+							<td id="myip">{{ entity.date|date("Y-m-d")}}</td>	
+							<td id="myip"><a href="{{ path('GCNAFNAFBundle_modifier', { 'id': entity.refJf }) }}">							
+							<div align="center"><img src="{{ asset('bundles/gcnafnaf/images/edit.png') }}" title="Modifier" width="12" height="12"></div>
+							</a></td>
+							<td id="myip"><a href="{{ path('GCNAFNAFBundle_supprimer', { 'id': entity.refJf }) }}">
+							<div align="center"><img src="{{ asset('bundles/gcnafnaf/images/sup.jpg') }}" title="Supprimer" width="12" height="12"></div>
+							</a></td>
+						</tr>				
+					{% endfor %}
+					</table>
+		{% else %}<br/><img src="{{ asset('bundles/gcnafnaf/images/info.jpg') }}" width="24" height="24"> La liste des jours fériés n'a pas encore initialisée!
+		{% endif %}	
+
+{% if last_page > 1 %}
+<a href="{{ path('GCNAFNAFBundle_jours', { 'page': 1 }) }}"> Début </a> 
+<a href="{{ path('GCNAFNAFBundle_jours', { 'page': previous_page }) }}"> << </a>	
+	
+{% for page in 1..last_page %}
+	{% if page == current_page %}
+		{{ page }}
+	{% else %}
+<a href="{{ path('GCNAFNAFBundle_jours', { 'page': page }) }}"> {{ page }} </a>
+	{% endif %}
+{% endfor %}
+
+<a href="{{ path('GCNAFNAFBundle_jours', { 'page': next_page }) }}">  >> </a> 
+<a href="{{ path('GCNAFNAFBundle_jours', { 'page': last_page }) }}">  Fin </a>
+ {% endif %}
+<br/><br/>
+<strong>{{ total_articles }}</strong> Jours Fériés dans la page {% if last_page > 1 %} - page <strong>{{ current_page }}/{{ last_page }}</strong>
+										{% endif %} <br/>
+	<p> 
+	<img src="{{ asset('bundles/gcnafnaf/images/icone_add.gif') }}" width="18" height="18"> <a href="{{ path('GCNAFNAFBundle_ajouter') }}">Ajouter un Jour Férié</a><br/>
+	</p>						
+{% endblock %}

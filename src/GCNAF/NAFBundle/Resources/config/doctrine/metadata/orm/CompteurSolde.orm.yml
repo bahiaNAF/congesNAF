@@ -1,0 +1,41 @@
+CompteurSolde:
+    type: entity
+    table: compteur_solde
+    id:
+        refCpt:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ref_cpt
+            generator:
+                strategy: IDENTITY
+    fields:
+        annee:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        cptInitial:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            column: cpt_initial
+        cptSolde:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            column: cpt_solde
+        idUser:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: id_user
+    lifecycleCallbacks: {  }

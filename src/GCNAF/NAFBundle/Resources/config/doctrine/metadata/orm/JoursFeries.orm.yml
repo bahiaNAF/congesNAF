@@ -1,0 +1,25 @@
+JoursFeries:
+    type: entity
+    table: jours_feries
+    id:
+        refJf:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ref_jf
+            generator:
+                strategy: IDENTITY
+    fields:
+        idProjet:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: id_projet
+        date:
+            type: date
+            nullable: false
+            comment: ''
+    lifecycleCallbacks: {  }

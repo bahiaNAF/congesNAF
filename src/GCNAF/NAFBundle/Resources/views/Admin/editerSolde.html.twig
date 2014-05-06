@@ -1,0 +1,73 @@
+{% extends 'GCNAFNAFBundle::layout.html.twig' %}
+{% block title %}Gestion Congés NAF{% endblock %}
+{% block titre %}Espace Administrateur - Gestion Soldes{% endblock %}	
+	{% block menu %}									
+					<div id="menu">
+						<ul>				
+							<li><a href="{{ path('GCNAFNAFBundle_demandes_conges')}}" >Demandes Congés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+						</ul>
+					</div>					
+		<div id="menu3">
+			<ul><li><a href="{{ path('GCNAFNAFBundle_goout')}}"><img src="{{ asset('bundles/gcnafnaf/images/out.jpg') }}" width="108" height="33"></a></li></ul>
+		</div>						
+	{% endblock %}
+	
+	{% block content %}			
+	<p id="msg"> => Modifier le compteur du solde d'un salarié :</p>
+			<div align="center">														
+					<form  method="post" {{ form_enctype(form) }}>					
+							{{ form_start(form) }}
+							{{ form_errors(form) }}
+							<table border="0">
+							<tr>
+								<td id="label">Le Salarié</td>
+								<td>							
+									{{ form_errors(form.idUser) }}
+									{{ form_widget(form.idUser) }}
+								</td>	
+							</tr>
+							<tr>
+								<td>	<br/>
+								</td>
+							</tr>
+							<tr>
+								<td id="label">L'Année</td>
+								<td>
+									{{ form_errors(form.annee) }}
+									{{ form_widget(form.annee) }}
+								</td>
+							</tr>
+							<tr>
+								<td>	<br/>
+								</td>
+							</tr>
+							<tr>
+								<td id="label">Solde Initial</td>
+								<td>
+									{{ form_errors(form.cptInitial) }}
+									{{ form_widget(form.cptInitial) }}
+								</td>	
+							</tr>
+							<tr>
+								<td>	<br/>
+								</td>
+							</tr>
+							<tr>
+								<td id="label">Compteur du Solde</td>
+								<td>
+									{{ form_errors(form.cptSolde) }}
+									{{ form_widget(form.cptSolde) }}
+								</td>
+							</tr>													
+							</table>												
+						<br/>
+								<pre>   		<input type="submit" value="Modifer"/> <input type="reset" value="Effacer"/> </pre>						
+						{{ form_end(form) }}					
+				</form>	<br/>						
+			</div>			
+<p><a href="{{ path('GCNAFNAFBundle_compteur_solde') }}">=>Retour à la liste des soldes</a></p>			
+	{% endblock %}	
