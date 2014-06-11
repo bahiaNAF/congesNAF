@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "2c0295f7b959d7cc894ee1a78d4f3b41",
+    "hash": "8a5845b680c1657a4439ffecb3edc28f",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -727,6 +727,46 @@
             "time": "2014-01-12 16:20:24"
         },
         {
+            "name": "jpgraph/jpgraph",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ztec/JpGraph.git",
+                "reference": "ad26df5941e847cf1255aecd2011ce16207304cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ztec/JpGraph/zipball/ad26df5941e847cf1255aecd2011ce16207304cf",
+                "reference": "ad26df5941e847cf1255aecd2011ce16207304cf",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JpGraph": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "QPL 1.0"
+            ],
+            "authors": [
+                {
+                    "name": "JpGraph team"
+                }
+            ],
+            "description": "jpGraph, library to make graphs and charts",
+            "homepage": "http://jpgraph.net/",
+            "keywords": [
+                "chart",
+                "data",
+                "graph",
+                "jpgraph",
+                "pie"
+            ],
+            "time": "2013-05-23 14:04:00"
+        },
+        {
             "name": "kriswallsmith/assetic",
             "version": "v1.1.2",
             "source": {
@@ -863,6 +903,56 @@
                 "psr-3"
             ],
             "time": "2013-11-14 19:48:31"
+        },
+        {
+            "name": "ob/highcharts-bundle",
+            "version": "1.0.1",
+            "target-dir": "Ob/HighchartsBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marcaube/ObHighchartsBundle.git",
+                "reference": "519d8c6724807b99459a5ca439c21455bbdb2c2c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marcaube/ObHighchartsBundle/zipball/519d8c6724807b99459a5ca439c21455bbdb2c2c",
+                "reference": "519d8c6724807b99459a5ca439c21455bbdb2c2c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/symfony": "2.*",
+                "zendframework/zend-json": "2.1.*@dev"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Ob\\HighchartsBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Aubé"
+                }
+            ],
+            "description": "Symfony2 Bundle that ease the use of highcharts to display rich graph and charts in your app",
+            "homepage": "https://github.com/marcaube/ObHighchartsBundle",
+            "keywords": [
+                "Symfony2",
+                "chart",
+                "charting",
+                "charts",
+                "graph",
+                "graphs",
+                "highcharts",
+                "marcaube",
+                "ob"
+            ],
+            "time": "2013-11-08 15:28:36"
         },
         {
             "name": "psr/log",
@@ -1540,6 +1630,95 @@
                 "templating"
             ],
             "time": "2013-12-06 07:47:10"
+        },
+        {
+            "name": "zendframework/zend-json",
+            "version": "2.1.6",
+            "target-dir": "Zend/Json",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/Component_ZendJson.git",
+                "reference": "dd8a8239a7c08c7449a6ea219da3e2369bd90d92"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendJson/zipball/dd8a8239a7c08c7449a6ea219da3e2369bd90d92",
+                "reference": "dd8a8239a7c08c7449a6ea219da3e2369bd90d92",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "zendframework/zend-stdlib": "self.version"
+            },
+            "suggest": {
+                "zendframework/zend-server": "Zend\\Server component"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev",
+                    "dev-develop": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Zend\\Json\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "provides convenience methods for serializing native PHP to JSON and decoding JSON to native PHP",
+            "keywords": [
+                "json",
+                "zf2"
+            ],
+            "time": "2014-03-06 18:00:05"
+        },
+        {
+            "name": "zendframework/zend-stdlib",
+            "version": "2.1.6",
+            "target-dir": "Zend/Stdlib",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/Component_ZendStdlib.git",
+                "reference": "e646729f2274f4552b6a92e38d8e458efe08ebc5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/e646729f2274f4552b6a92e38d8e458efe08ebc5",
+                "reference": "e646729f2274f4552b6a92e38d8e458efe08ebc5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "zendframework/zend-eventmanager": "To support aggregate hydrator usage",
+                "zendframework/zend-servicemanager": "To support hydrator plugin manager usage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev",
+                    "dev-develop": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Zend\\Stdlib\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "keywords": [
+                "stdlib",
+                "zf2"
+            ],
+            "time": "2014-01-04 13:00:28"
         }
     ],
     "packages-dev": [
@@ -1549,9 +1728,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "jpgraph/jpgraph": 20
+    },
     "platform": {
         "php": ">=5.3.3"
     },

@@ -18,7 +18,7 @@ class DefaultController extends ContainerAware
 	  $user = new Ressource();
 	  $form = $this->container->get('form.factory')->create(new LoginForm(), $user);	
 	  $request = $this->container->get('request');
-	  
+	  //initialiser session
 	  $session = $request->getSession();
 	  
 	  if ($request->getMethod() == 'POST') 
@@ -48,10 +48,10 @@ return $this->container->get('templating')->renderResponse('GCNAFNAFBundle:Defau
 					$session->set('nomAdmin', $nom);
 					$session->set('preAdmin', $pre);
 					$NameOfAd    = $session->get('nomAdmin');
-					$LasteNameAd = $session->get('preAdmin');
-											
+					$LasteNameAd = $session->get('preAdmin');											
 					$session->set('cleuser', $iduser);
-					$cle = $session->get('cleuser');							
+					$cle = $session->get('cleuser');
+												
 					return new RedirectResponse($this->container->get('router')->generate('GCNAFNAFBundle_demandes_conges'));												
 				}
 				

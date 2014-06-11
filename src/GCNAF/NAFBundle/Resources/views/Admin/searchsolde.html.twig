@@ -8,7 +8,8 @@
 							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
 							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
 							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
-							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_gestion_cra')}}" >CRA</a></li>		
 						</ul>
 					</div>					
 		<div id="menu3">
@@ -16,14 +17,15 @@
 		</div>						
 	{% endblock %}		
 	{% block content %}			
-	
+<a href="{{ path('GCNAFNAFBundle_impression_total_solde')}}"><img src="{{ asset('bundles/gcnafnaf/images/iconpdf.jpg')}}" title="Impression" width="25" height="25"></a>
+
 {% if erreur %}<p><font color="#FF00FF">=>{{ erreur }}:</font></p>{% endif %}
 	
 <form  method="post" {{ form_enctype(form) }} action="{{ path('GCNAFNAFBundle_compteur_solde_searchByear') }}">{{ form_start(form) }}{{ form_errors(form) }}
 <div><pre id="label">Recherche par année {{ form_widget(form.annee) }}<input type="submit" value="Go" /></pre>					
 {{ form_errors(form.annee) }}</div>{{ form_end(form) }}
 </form>
-<br/>				
+<hr/><br/>				
 {% if total2 %}
 
 					<table border="1"  width="500" id="tabstl2">

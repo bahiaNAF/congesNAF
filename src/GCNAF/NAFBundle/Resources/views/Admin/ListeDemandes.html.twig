@@ -8,7 +8,8 @@
 							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
 							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
 							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
-							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_gestion_cra')}}" >CRA</a></li>
 						</ul>
 					</div>					
 		<div id="menu3">
@@ -22,7 +23,7 @@
 <form  method="post" {{ form_enctype(form) }} action="{{ path('GCNAFNAFBundle_demandes_conges_searchByear') }}">{{ form_start(form) }}{{ form_errors(form) }}
 <div><pre id="label">Recherche par année {{ form_widget(form.dateEnrg) }}<input type="submit" value="Go" /></pre>					
 {{ form_errors(form.dateEnrg) }}</div>{{ form_end(form) }}</form>
-<br/>
+<hr/><br/>
 
 {% if(entities) %}
 					<table border="1" width="775" id="tabstl2">
@@ -52,7 +53,7 @@
 						<td> 
 <pre><a href="{{ path('GCNAFNAFBundle_admin_AccorderDemande', { 'id': a.idDem }) }}">Accorder</a> <a href="{{ path('GCNAFNAFBundle_admin_RefuserDemande', { 'id': a.idDem }) }}">Réfuser</a> </pre>
 						</td>
-						<td> <a href="{{ path('GCNAFNAFBundle_demandes_conges_supprimer', { 'id': a.idDem }) }}">							
+						<td> <a href="{{ path('GCNAFNAFBundle_demandes_conges_supprimer', { 'id': a.idDem }) }}" onClick="return(confirm('Voulez-vous vraiment supprimer cette ligne?'));">							
 							 <div align="center"><img src="{{ asset('bundles/gcnafnaf/images/sup.jpg') }}" title="Supprimer" width="10" height="10"></div>
 							 </a>
 						</td>

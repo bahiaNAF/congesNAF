@@ -14,6 +14,8 @@ use GCNAF\NAFBundle\Entity\CompteurSolde;
 use GCNAF\NAFBundle\Entity\Demande;
 
 use GCNAF\NAFBundle\Form\SearchSoldeForm;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Bundle\SwiftmailerBundle;
   
 class SoldeController extends Controller
 {  	
@@ -65,6 +67,8 @@ class SoldeController extends Controller
 	  $user = new CompteurSolde();
 	  $form = $this->container->get('form.factory')->create(new SearchSoldeForm(), $user);
 	  $request = $this->container->get('request');	
+	  $session = $request->getSession();	  
+	  
 	  if ($request->getMethod() == 'POST') 
 	  {
 		$form->bind($request);	
@@ -73,6 +77,10 @@ class SoldeController extends Controller
 		$em = $this->container->get('doctrine')->getManager();		  
 		$form_user = $form->getData();
 		$myear=$form_user->getAnnee();
+		
+		$session->set('anneesolde', $myear);
+		$YearOfSolde = $session->get('anneesolde');
+		
 		//requete				
 		 $qb = $em->createQueryBuilder();		  		  				  		  		  
 		 $qb->select('c.refCpt,c.annee,c.cptInitial,c.cptSolde,c.idUser,r.id,r.nom,r.prenom')
@@ -282,5 +290,38 @@ class SoldeController extends Controller
 			array(
 			'form' => $form->createView(),		
 			));	
-	}	 			
+	}
+	
+  public function ImprimerSoldeTotalAction()
+{
+	$em          = $this->container->get('doctrine')->getManager();	
+	$request     = $this->container->get('request');	
+    $session     = $request->getSession();  		
+	$YearOfSolde = $session->get('anneesolde');
+	$anneepre    = $YearOfSolde-1;
+	
+	$qb = $em->createQueryBuilder();		  		  				  		  		  
+	$qb->select('c.refCpt,c.annee,c.cptInitial,c.cptSolde,c.idUser,r.id,r.nom,r.prenom,r.dateEmb')
+		->from('GCNAFNAFBundle:CompteurSolde', 'c')
+		->from('GCNAFNAFBundle:Ressource', 'r')			
+		->where('r.id = c.idUser ')											
+		->andWhere('c.annee = :myear')												
+		->orderBy('r.dateEmb', 'ASC');		
+	$qb->setParameter('myear', $YearOfSolde);					
+	$query = $qb->getQuery();               
+	$total = $query->getResult();	 
+	
+	$html = $this->renderView('GCNAFNAFBundle:Admin:PDFlisteSoldeTotal.html.twig', array(
+		'entities' => $total,           		
+		'anneeplus' => $YearOfSolde,
+		'anneemoins' => $anneepre,
+	));	    
+	$html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
+	$html2pdf->pdf->SetDisplayMode('real');
+	$html2pdf->writeHTML($html);
+	$html2pdf->Output('GestionCongesNAFListeSoldes.pdf');
+	return new Response();
+	
+}// fin fct
+	
 }//end classe

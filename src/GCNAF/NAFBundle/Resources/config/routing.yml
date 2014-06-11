@@ -102,6 +102,9 @@ GCNAFNAFBundle_user_simple_solde_search:
 GCNAFNAFBundle_impression_pdf:
     pattern:  /accueil/UtilisateurSimple/ImpressionFormatPDF
     defaults: { _controller: GCNAFNAFBundle:Imprimer:ImprimerSolde }
+GCNAFNAFBundle_impression_total_solde:
+    pattern:  /accueil/Administration/ImpressionInfoTotal
+    defaults: { _controller: GCNAFNAFBundle:Solde:ImprimerSoldeTotal }	
 GCNAFNAFBundle_impression_demande_pdf:
     pattern:  /accueil/UtilisateurSimple/ImprimerDemande/{id}
     defaults: { _controller: GCNAFNAFBundle:Imprimer:ImprimerDemande }
@@ -143,4 +146,37 @@ GCNAFNAFBundle_chef_equipe_demandes_supprimer:
     defaults: { _controller: GCNAFNAFBundle:Chef:supprimer }
 GCNAFNAFBundle_chef_equipe_demandes_ajouter:
     pattern:  /accueil/ChefEquipe/Ajouter
-    defaults: { _controller: GCNAFNAFBundle:Chef:Ajouter }	
+    defaults: { _controller: GCNAFNAFBundle:Chef:Ajouter }
+GCNAFNAFBundle_gestion_cra:
+    pattern:  /admin/cra
+    defaults: { _controller: GCNAFNAFBundle:Cra:home }
+GCNAFNAFBundle_admin_listeTaches:
+    pattern:  /naf
+    defaults: { _controller: GCNAFNAFBundle:Taches:index }
+GCNAFNAFBundle_admin_addTaches:
+    pattern:  /ajouter_tache
+    defaults: { _controller: GCNAFNAFBundle:Taches:ajouter }
+GCNAFNAFBundle_admin_updTache:
+    pattern:  /modificer_tache/{id}
+    defaults: { _controller: GCNAFNAFBundle:Taches:modifier }
+GCNAFNAFBundle_admin_supTache:
+    pattern:  /naf_delete/{id}
+    defaults: { _controller: GCNAFNAFBundle:Taches:delete }	
+GCNAFNAFBundle_admin_listeCRA:
+    pattern:  /naf/cra
+    defaults: { _controller: GCNAFNAFBundle:Cra:index }
+GCNAFNAFBundle_cra_statistic:
+    pattern:  /statistiques/{ids},{idp}
+    defaults: { _controller: GCNAFNAFBundle:Cra:statistiques }
+GCNAFNAFBundle_gestion_cra_user:
+    pattern:  /user/cra
+    defaults: { _controller: GCNAFNAFBundle:Cra:homeFirst }	
+GCNAFNAFBundle_user_listeCRA:
+    pattern:  /cra/listeUser
+    defaults: { _controller: GCNAFNAFBundle:Cra:suiviCra }	
+GCNAFNAFBundle_user_supCra:
+    pattern:  /userCra_delete/{id}
+    defaults: { _controller: GCNAFNAFBundle:Cra:delete }
+GCNAFNAFBundle_user_modifierCra:
+    pattern:  /modifierCra_up/{id}
+    defaults: { _controller: GCNAFNAFBundle:Cra:update }

@@ -12,20 +12,20 @@ body {
 	}
 #content{
 	position: relative;
-	width: 800px;
+	width: 830px;
 	margin: 0 auto;
 	border: 2px solid #C0C0C0;
 	background-color: #FFFFFF;
 	}
 #top{
-	width: 792px;
+	width: 820px;
 	height: 126px;
 	padding: 2px;
 	background-color: #F7F7F7;
 	border: 2px solid #FFFFFF;
 	}
 #top_ban{
-	width: 788px;
+	width: 820px;
 	height: 120px;
 	border: 2px solid #C0C0C0;
 	background: url(../images/medias/top_ban.jpg)no-repeat left bottom;
@@ -97,7 +97,7 @@ body {
 	min-height: 400px;
 	}
 #footer{
-	width: 792px;
+	width: 820px;
 	height: 18px;
 	padding: 2px;
 	background-color: #BDC4E5;

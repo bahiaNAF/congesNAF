@@ -8,7 +8,8 @@
 							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
 							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
 							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
-							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_gestion_cra')}}" >CRA</a></li>
 						</ul>
 					</div>					
 		<div id="menu3">
@@ -46,11 +47,10 @@
 							</table>																			
 <input type="submit" value="Ajouter"/>
 	{{ form_end(form) }}					
-	</form><br/><br/>
-	
+	</form>
+<hr/>
 <p id="msg"> => Liste Salarié-Chef d'équipe:</p>
 {% if entities %}
-
 <form  method="post" {{ form_enctype(formSearch) }} action="{{ path('GCNAFNAFBundle_chef_equipe_searchs') }}">{{ form_start(formSearch) }}{{ form_errors(formSearch) }}
 <div><pre id="label">{{ form_label(formSearch.idSalarie) }} {{ form_widget(formSearch.idSalarie) }}<input type="submit" value="Go" /></pre>					
 {{ form_errors(formSearch.idSalarie) }}</div>{{ form_end(formSearch) }}</form><br/>			
@@ -75,7 +75,7 @@
 							<td id="myip">{{ entity.dateF|date("Y-m-d")}}</td>	
 						{% endif %}
 							<td id="myip">{{ entity.projet}}</td>							
-							<td id="myip"><a href="{{ path('GCNAFNAFBundle_chef_equipe_supp', { 'id': entity.ref }) }}">
+							<td id="myip"><a href="{{ path('GCNAFNAFBundle_chef_equipe_supp', { 'id': entity.ref }) }}" onClick="return(confirm('Voulez-vous vraiment supprimer cette ligne?'));">
 							<div align="center"><img src="{{ asset('bundles/gcnafnaf/images/sup.jpg') }}" title="Supprimer" width="12" height="12"></div>
 							</a></td>
 						</tr>				

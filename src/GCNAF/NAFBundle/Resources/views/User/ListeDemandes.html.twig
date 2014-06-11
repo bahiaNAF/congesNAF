@@ -6,7 +6,8 @@
 						<ul>
 				<!-- Texte Menu de la page à modifier user index -->
 							<li><a href="{{ path('GCNAFNAFBundle_user_simple_demandes', { 'id': id }) }}">Demandes Congés</a></li>
-							<li><a href="{{ path('GCNAFNAFBundle_user_simple_solde')}}" >Liste des Soldes</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_user_simple_solde')}}" >Liste des Soldes</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_gestion_cra_user')}}" >Gestion CRA</a></li>		
 							<li><a href="{{ path('GCNAFNAFBundle_goout')}}" class="menu2">Déconnecter</a></li>
 				<!-- Fin Menu de la page à modifier  -->
 						</ul>
@@ -21,7 +22,7 @@
 				</div>
 					{{ form_end(form) }}
 				</form>        
-<br/><br/>				
+<hr/><br/>			
 {% if(total) %}
 					<table border="1" width="760" id="tabcssuser">
 					<tr>														
@@ -53,7 +54,7 @@
 					<div align="center"><img src="{{ asset('bundles/gcnafnaf/images/edit.png')}}" title="modifier seulement les demandes en attentes" width="10" height="10"> </div> 
 					</a>
 					</td>
-					<td> <a href="{{ path('GCNAFNAFBundle_user_simple_supprimer', { 'id': a.idDem }) }}">							
+					<td> <a href="{{ path('GCNAFNAFBundle_user_simple_supprimer', { 'id': a.idDem }) }}" onClick="return(confirm('Voulez-vous vraiment supprimer cette ligne?'));">							
 					<div align="center"><img src="{{ asset('bundles/gcnafnaf/images/sup.jpg') }}" title="supprimer seulement les demandes en attentes" width="10" height="10"></div>
 					 </a>
 					</td>

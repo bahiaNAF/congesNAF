@@ -6,7 +6,8 @@
 						<ul>
 				<!-- Texte Menu de la page à modifier user index -->
 							<li><a href="{{ path('GCNAFNAFBundle_user_simple_demandes', { 'id': id }) }}">Demandes Congés</a></li>
-							<li><a href="{{ path('GCNAFNAFBundle_user_simple_solde')}}" >Liste des Soldes</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_user_simple_solde')}}" >Liste des Soldes</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_gestion_cra_user')}}" >Gestion CRA</a></li>		
 							<li><a href="{{ path('GCNAFNAFBundle_goout')}}" class="menu2">Déconnecter</a></li>
 				<!-- Fin Menu de la page à modifier  -->
 						</ul>
@@ -65,9 +66,9 @@
 							</tr>							
 							</table>												
 						<br/>
-				<pre>      			<input type="submit" value="Ajouter"/> <input type="reset" value="Effacer"/> </pre>						
+				<pre>      			<input type="submit" value="Ajouter" id="btnstyle"/> <input type="reset" value="Effacer" id="btnstyle"/> </pre>						
 						{{ form_end(form) }}					
-				</form>	<br/>
+				</form>	<br/><br/>
 				<p><a href="{{ path('GCNAFNAFBundle_user_simple_demandes', { 'id': id }) }}">=>Retour à la liste principale</a></p>
 			</div>						
 	{% endblock %}	

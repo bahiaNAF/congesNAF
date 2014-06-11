@@ -7,22 +7,22 @@
 				<!-- Texte Menu de la page à modifier user index -->
 							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe_index', { 'id': id }) }}">Accueil</a></li>
 							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe_demandes', { 'id': id }) }}">Demandes Congés</a></li>
-							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe_solde')}}" >Liste des Soldes</a></li>							
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe_solde')}}" >Liste des Soldes</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_gestion_cra_user')}}" >Gestion CRA</a></li>	
 							<li><a href="{{ path('GCNAFNAFBundle_goout')}}" class="menu2">Déconnecter</a></li>
 				<!-- Fin Menu de la page à modifier  -->
 						</ul>
 					</div>
 			{% endblock %}	
 	{% block content %}		
-<p id="msg"> => Résultats de votre recherche</p>	
-	
+<p id="msg"> => Résultats de votre recherche</p>		
 <form  method="post" {{ form_enctype(form) }} action="{{ path('GCNAFNAFBundle_chef_equipe_solde_search') }}">{{ form_start(form) }}{{ form_errors(form) }}
 <div><pre id="label">Recherche par année {{ form_widget(form.annee) }} <input type="submit" value="Go" /></pre>					
 {{ form_errors(form.annee) }}</div>{{ form_end(form) }}
 </form>
-
+<hr/><br/>
 {% if(entities) %}
-<br/>
+
 					<table border="1" width="500">
 					<tr>														
 							<td bgcolor="#CCFFFF"><font color="#CC0000"><div align="center" id="myip">Période         </div></font></td>

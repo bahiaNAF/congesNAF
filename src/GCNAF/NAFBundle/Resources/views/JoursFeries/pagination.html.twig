@@ -8,7 +8,8 @@
 							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
 							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
 							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
-							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_gestion_cra')}}" >CRA</a></li>
 						</ul>
 					</div>					
 		<div id="menu3">
@@ -18,14 +19,12 @@
 	
 	{% block content %}	
 	
-<p id="msg"> => Liste des Jours Fériés :</p>
-	
+<p id="msg"> => Liste des Jours Fériés :</p>	
 <form  method="post" {{ form_enctype(form) }} action="{{ path('GCNAFNAFBundle_jours_searchByear') }}">{{ form_start(form) }}{{ form_errors(form) }}
 <div><pre id="label">Recherche par année {{ form_widget(form.date) }}<input type="submit" value="Go" /></pre>					
 {{ form_errors(form.date) }}</div>{{ form_end(form) }}</form>
-
-{% if entities %}			
-<br/>			
+<hr/><br/>
+{% if entities %}					
 				<table border="1" id="tabstl2">
 					<tr>
 							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Titre    </div></font></td>
@@ -40,7 +39,7 @@
 							<td id="myip"><a href="{{ path('GCNAFNAFBundle_modifier', { 'id': entity.refJf }) }}">							
 							<div align="center"><img src="{{ asset('bundles/gcnafnaf/images/edit.png') }}" title="Modifier" width="12" height="12"></div>
 							</a></td>
-							<td id="myip"><a href="{{ path('GCNAFNAFBundle_supprimer', { 'id': entity.refJf }) }}">
+							<td id="myip"><a href="{{ path('GCNAFNAFBundle_supprimer', { 'id': entity.refJf }) }}" onClick="return(confirm('Voulez-vous vraiment supprimer cette ligne?'));">
 							<div align="center"><img src="{{ asset('bundles/gcnafnaf/images/sup.jpg') }}" title="Supprimer" width="12" height="12"></div>
 							</a></td>
 						</tr>				

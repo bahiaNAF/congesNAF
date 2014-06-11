@@ -8,7 +8,8 @@
 							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
 							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
 							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
-							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>	
+							<li><a href="{{ path('GCNAFNAFBundle_gestion_cra')}}" >CRA</a></li>
 						</ul>
 					</div>					
 		<div id="menu3">
@@ -17,15 +18,14 @@
 	{% endblock %}	
 	{% block content %}	
 
-{% if message %}<p><font color="#FF00FF">=>{{ message }}:</font></p>{% endif %}
-	
+{% if message %}<p><font color="#FF00FF">=>{{ message }}:</font></p>{% endif %}	
 <form  method="post" {{ form_enctype(form) }} action="{{ path('GCNAFNAFBundle_salaries_search') }}">{{ form_start(form) }}{{ form_errors(form) }}
 <div><pre id="label">{{ form_label(form.nom) }} {{ form_widget(form.nom) }}<input type="submit" value="Go" /></pre>					
 {{ form_errors(form.nom) }}</div>{{ form_end(form) }}
 </form>
-	
+<hr/><br/>	
 {% if total %}
-<br/>	
+	
 					<table border="1" id="tabstl2">
 					<tr>							
 						<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Nom            </div></font></td>	
@@ -46,7 +46,7 @@
 	 <div align="center"> <img src="{{ asset('bundles/gcnafnaf/images/edit.png') }}" title="Modifier" width="12" height="12"> </div> 
 	 </a>
 </td>
-<td> <a href="{{ path('GCNAFNAFBundle_salaries_supprimer', { 'id': a.id }) }}">
+<td> <a href="{{ path('GCNAFNAFBundle_salaries_supprimer', { 'id': a.id }) }}" onClick="return(confirm('Voulez-vous vraiment supprimer cette ligne?'));">
 	 <div align="center"> <img src="{{ asset('bundles/gcnafnaf/images/sup.jpg') }}" title="Supprimer" width="12" height="12"> </div>
 	 </a>
 </td>

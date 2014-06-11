@@ -8,7 +8,8 @@
 							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
 							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
 							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
-							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_gestion_cra')}}" >CRA</a></li>
 						</ul>
 					</div>					
 		<div id="menu3">
@@ -23,9 +24,9 @@
 <div><pre id="label">{{ form_label(formSearch.idSalarie) }} {{ form_widget(formSearch.idSalarie) }}<input type="submit" value="Go" /></pre>					
 {{ form_errors(formSearch.idSalarie) }}</div>{{ form_end(formSearch) }}
 </form>	
-
+<hr/><br/>
 {% if total %}
-<br/>
+
 					<table border="1" id="tabstl2">
 					<tr>							
 							<td bgcolor="#FFCC99"><font color="#CC0000"><div align="center" id="myip">Salarié  </div></font></td>

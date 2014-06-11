@@ -8,7 +8,8 @@
 							<li><a href="{{ path('GCNAFNAFBundle_compteur_solde')}}" >Gestion Compteurs</a></li>
 							<li><a href="{{ path('GCNAFNAFBundle_salaries')}}" >Gestion Salariés</a></li>							
 							<li><a href="{{ path('GCNAFNAFBundle_jours')}}" >Jours Fériés</a></li>
-							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>										
+							<li><a href="{{ path('GCNAFNAFBundle_chef_equipe')}}" >Chef d'Equipe</a></li>
+							<li><a href="{{ path('GCNAFNAFBundle_gestion_cra')}}" >CRA</a></li>
 						</ul>
 					</div>					
 		<div id="menu3">
@@ -22,7 +23,7 @@
 <form  method="post" {{ form_enctype(form) }} action="{{ path('GCNAFNAFBundle_compteur_solde_searchByear') }}">{{ form_start(form) }}{{ form_errors(form) }}
 <div><pre id="label">Recherche par année {{ form_widget(form.annee) }}<input type="submit" value="Go" /></pre>					
 {{ form_errors(form.annee) }}</div>{{ form_end(form) }}</form>
-
+<hr/>
 <p><a href="{{ path('GCNAFNAFBundle_compteur_solde_initialiser') }}">=>Initialisation</a></p>					
 {% if(entities) %}
 					<table border="1" width="500" id="tabstl2">
