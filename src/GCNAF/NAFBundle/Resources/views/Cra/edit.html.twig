@@ -1,0 +1,84 @@
+{% extends 'GCNAFNAFBundle::layoutCRA.html.twig' %}
+
+{% block menu %}		
+	<ol id="documenter_nav">
+		<li><a href="#documenter_cover"><img src="{{ asset('bundles/gcnafnaf/images/icon_home.gif') }}">  Accueil</a></li>
+		<li><a class="current" href="{{ path('GCNAFNAFBundle_user_listeCRA')}}"><img src="{{ asset('bundles/gcnafnaf/images/cra1.gif') }}">  Rapport des activités(CRA)</a></li>
+{% if profil=="chef" %}
+		<li><a href="{{ path('GCNAFNAFBundle_chef_equipe_index', { 'id': id }) }}"><img src="{{ asset('bundles/gcnafnaf/images/calendar_icon.gif') }}" width="20" height="15">   Gestion Congés</a></li>
+{% endif %}	
+{% if profil=="user" %}
+		<li><a href="{{ path('GCNAFNAFBundle_user_simple_demandes', { 'id': id }) }}"><img src="{{ asset('bundles/gcnafnaf/images/calendar_icon.gif') }}" width="20" height="15">   Gestion Congés</a></li>
+{% endif %}	
+		<li><a href="{{ path('GCNAFNAFBundle_goout')}}"><img src="{{ asset('bundles/gcnafnaf/images/icon-exit.gif') }}" width="19" height="18">  Déconnexion</a></li>	
+	</ol>
+{% endblock %}
+
+{% block section %}
+<br/><br/><br/><br/><br/>
+<h1> Rapport des activités</h1>
+<h2> <img src="{{ asset('bundles/gcnafnaf/images/ib_inventory_icon.gif') }}"> Modifier les infos d'une activité</h2>
+<hr />
+{% if(msg) %}<img src="{{ asset('bundles/gcnafnaf/images/busy.png') }}"><font color="#990000">  {{ msg}} </font>{% endif %} <br/><br/><br/>
+	<table border="0">
+	<tr>
+		<td id="label2">Liste des Projet :</td>
+		<td>							
+			{{ form_errors(formProjet.id) }}
+			{{ form_widget(formProjet.id) }}
+		</td>
+	</tr>
+<form  method="post" {{ form_enctype(formCra) }}>{{ form_start(formCra) }}{{ form_errors(formCra) }}
+	<tr>
+		<td id="label2">Liste des Tâches :</td>
+		<td>							
+			{{ form_errors(formCra.tache) }}
+			{{ form_widget(formCra.tache) }}
+		</td>
+	</tr>
+	<tr>
+		<td id="label2">Date de CRA :</td>
+		<td>							
+			{{ form_errors(formCra.date) }}
+			{{ form_widget(formCra.date) }}
+		</td>	
+	</tr>							
+	<tr>
+		<td id="label2">La durée (jour) :</td>
+		<td>
+			{{ form_errors(formCra.duree) }}
+			{{ form_widget(formCra.duree) }}
+		</td>
+	</tr>
+	<tr>	
+		<td id="label2">Remarque :</td>
+		<td>
+			{{ form_errors(formCra.remarque) }}
+			{{ form_widget(formCra.remarque) }}
+		</td>		
+	</tr>
+	</table>																			
+	<input type="submit" value="Modifier" style="background-color:#FFCCFF"/> <input type="reset" value="Annuler" style="background-color:#FFCCFF"/>
+	{{ form_end(formCra) }}					
+</form>	
+<ul>        
+    <a href="{{ path('GCNAFNAFBundle_user_listeCRA')}}">
+    <img src="{{ asset('bundles/gcnafnaf/images/sign-out.png') }}"> Retour
+    </a>        
+</ul>  		 		
+<br/><br/><br/><br/><br/>
+
+<section id="documenter_cover">
+	  <h1><img src="{{ asset('bundles/gcnafnaf/images/customers.png') }}"> Bienvenue<font color="#999999"> {% if name %}{{ name }} {% endif %}{% if prenom %}{{ prenom }}{% endif %}</font></h1>
+	  <h2>Suivi en ligne des rapports d'activités des salariés NAF</h2>
+	  <hr />  
+	  <ul>
+		<li>Norsysafrique</li>
+		<li>Contact : Tariq Zidi</li>
+		<li>Email : directionnaf@norsys.fr</li>
+		<li>Fax : (+212)5 24 30 79 73</li>
+	  </ul>  
+	  <p>Adresse : Sidi Abbad I, villa n°38 - 40000 Marrakech</p>
+</section>
+
+{% endblock %}

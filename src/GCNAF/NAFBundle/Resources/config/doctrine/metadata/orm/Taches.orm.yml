@@ -1,0 +1,35 @@
+Taches:
+    type: entity
+    table: taches
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelle:
+            type: string
+            nullable: false
+            length: 300
+            fixed: false
+            comment: ''
+        dated:
+            type: date
+            nullable: false
+            comment: ''
+            column: dateD
+        datef:
+            type: date
+            nullable: false
+            comment: ''
+            column: dateF
+        projet:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+    lifecycleCallbacks: {  }

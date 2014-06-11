@@ -1,0 +1,57 @@
+{% if app.session.get('cleuser')%}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Gestion CRA Norsys Afrique - Création des Rapports d'Activités</title>
+	
+	<meta name="description" content="CRA NAF">
+	<meta name="author" content="BAHIA">
+	<meta name="copyright" content="HASSIKI2014">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />	
+		
+	<link rel="stylesheet" href="{{ asset('bundles/gcnafnaf/css/documenter_style.css') }}" type="text/css" media="all" />
+	
+	<script src="{{ asset('bundles/gcnafnaf/js/jquery.1.6.4.js')}}"></script>	
+	<script src="{{ asset('bundles/gcnafnaf/js/jquery.scrollTo-1.4.2-min.js')}}"></script>
+	<script src="{{ asset('bundles/gcnafnaf/js/jquery.easing.js')}}"></script>	
+
+	<script>document.createElement('section');var duration=500,easing='swing';</script>
+	<script src="{{ asset('bundles/gcnafnaf/js/script.js')}}"></script>
+	
+	<style>
+		html{background-color:#FFFFFF;color:#383838;}
+		::-moz-selection{background:#0CB6DF;color:#ffffff;}
+		::selection{background:#0CB6DF;color:#ffffff;}
+		#documenter_sidebar #documenter_logo{} 
+		a{color:#0000FF;}
+		hr{border-top:1px solid #EBEBEB;border-bottom:1px solid #FFFFFF;}
+		#documenter_sidebar, #documenter_sidebar ol a{background-color:#DDDDDD;color:#222222;}
+		#documenter_sidebar ol a{-webkit-text-shadow:1px 1px 0px #EEEEEE;-moz-text-shadow:1px 1px 0px #EEEEEE;text-shadow:1px 1px 0px #EEEEEE;}
+		#documenter_sidebar ol{border-top:1px solid #AAAAAA;}
+		#documenter_sidebar ol a{border-top:1px solid #EEEEEE;border-bottom:1px solid #AAAAAA;color:#444444;}
+		#documenter_sidebar ol a:hover{background:#444444;color:#DDDDDD;border-top:1px solid #444444;}
+		#documenter_sidebar ol a.current{background:#444444;color:#DDDDDD;border-top:1px solid #444444;}
+		#documenter_copyright{display:block !important;visibility:visible !important;}
+	</style>		
+</head>
+
+<body>
+	<div id="documenter_sidebar">
+		<a href="#" id="documenter_logo"></a>		
+			{% block menu %}		
+			
+			{% endblock %}		
+		<div id="documenter_copyright">Copyright @ 2013-2014 <br/><font color="blue">Norsys Afrique|Gestion CRA & Congés</font> </div>
+	</div>
+	
+	<div id="documenter_content">	
+		{% block section %}
+		
+		{% endblock %}  
+	</div>
+</body>
+</html>
+
+{% else %}
+<script LANGUAGE='JavaScript'>alert(' Vous êtes déconnecté veuillez vous reconnecter!'); </script>
+{% endif %}

@@ -1,0 +1,48 @@
+<html>
+	<head>		
+			<!-- META -->
+			<meta content="text/html; charset=utf-8" />			
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+			<meta name="description" content="" />
+			<meta name="author" content="" />
+			<meta name="viewport" content="width=device-width,initial-scale=1" />			
+			<title>Gestion Congés</title>							
+			<!-- CSS -->
+			<link href="bundles/gcnafnaf/css/NAFstyle.css" rel="stylesheet" type="text/css" />
+			<link href="bundles/gcnafnaf/css/css.css" rel="stylesheet" type="text/css" />			
+	</head>
+<body>  <br/>
+		<div align="center">
+			<h2>Gestion congé {{anneemoins}}-{{anneeplus}}</h2>
+			<h4>SALARIES DE NORSYS AFRIQUE</h4>	
+		</div>		
+			{% if(entities) %}
+			<br/><br/>
+					<table border="1" width="151" align="left">
+					<tr>														
+						<td><font color="#CC0000"><div align="center" ><strong>Nom & Prénom    </strong></div></font></td>
+						<td><font color="#CC0000"><div align="center" ><strong>Date d'embauche </strong></div></font></td>
+						<td><font color="#CC0000"><div align="center" ><strong>Droit           </strong></div></font></td>
+						<td><font color="#CC0000"><div align="center" ><strong>Jours pris      </strong></div></font></td>
+						<td><font color="#CC0000"><div align="center" ><strong>Jours restant   </strong></div></font></td>																																							
+					</tr>
+			{% for a in entities %}						
+					<tr>						
+						<td id="myip">{{ a.nom}} {{ a.prenom}}</td>
+						<td id="myip">{{ a.dateEmb|date("Y-m-d")}}</td>
+						<td id="myip">{{ a.cptInitial}} jours</td>
+						<td id="myip">{{(a.cptInitial)-(a.cptSolde)}} jours</td>						
+					
+					{% if(a.cptSolde<0) %}		
+						<td><strong>{{ a.cptSolde}}</strong> jours</td>
+					{% else %}	
+						<td id="myip">{{ a.cptSolde}} jours</td>
+					{% endif %}					
+					</tr>				
+					
+			{% endfor %}
+					</table>					
+					{% else %} <br/>La liste est vide!
+		   {% endif %}			
+</body>
+</html>

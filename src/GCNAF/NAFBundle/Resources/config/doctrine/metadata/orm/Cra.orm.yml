@@ -1,0 +1,40 @@
+Cra:
+    type: entity
+    table: cra
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        salarie:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        tache:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        date:
+            type: date
+            nullable: false
+            comment: ''
+        duree:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+        remarque:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

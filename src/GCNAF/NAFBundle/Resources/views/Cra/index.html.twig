@@ -1,0 +1,65 @@
+{% extends 'GCNAFNAFBundle::layoutCRA.html.twig' %}
+{% block menu %}		
+
+<ol id="documenter_nav">
+<li><a href="#documenter_cover"><img src="{{ asset('bundles/gcnafnaf/images/icon_home.gif') }}">  Accueil</a></li>
+<li><a href="{{ path('GCNAFNAFBundle_admin_listeTaches')}}"><img src="{{ asset('bundles/gcnafnaf/images/ib_inventory_icon.gif') }}">  Tâches des projets</a></li>
+<li><a class="current" href="{{ path('GCNAFNAFBundle_admin_listeCRA')}}"><img src="{{ asset('bundles/gcnafnaf/images/cra1.gif') }}">  CRA-Suivi des activités</a></li>
+<li><a href="{{ path('GCNAFNAFBundle_demandes_conges')}}"><img src="{{ asset('bundles/gcnafnaf/images/calendar_icon.gif') }}" width="20" height="15">   Gestion Congés</a></li>
+<li><a href="{{ path('GCNAFNAFBundle_goout')}}"><img src="{{ asset('bundles/gcnafnaf/images/icon-exit.gif') }}" width="19" height="18">  Déconnexion</a></li>	
+</ol>
+
+{% endblock %}
+
+{% block section %}
+	<br/><br/><br/><br/><br/><br/><br/>	
+    <h1>Suivi Journalier des Activités</h1>
+	<hr />	
+{% if(entities) %}
+    <table id="tabstl2">        
+            <tr>              
+                <td bgcolor="#00CCFF"><div align="center"><strong> Salarié    </strong></div></td>
+				<td bgcolor="#00CCFF"><div align="center"><strong> Projet     </strong></div></td>                  
+                <td bgcolor="#00CCFF"><div align="center"><strong> Tâche      </strong></div></td>
+                <td bgcolor="#00CCFF"><div align="center"><strong> Date début de la tâche</strong></div></td>
+                <td bgcolor="#00CCFF"><div align="center"><strong> Date fin de la tâche  </strong></div></td>
+				<td bgcolor="#00CCFF"><div align="center"><strong> Date CRA   </strong></div></td>
+				<td bgcolor="#00CCFF"><div align="center"><strong> Durée (j)   </strong></div></td>
+				<td bgcolor="#00CCFF"><div align="center"><strong> Remarque   </strong></div></td>
+				<td bgcolor="#00CCFF"><div align="center"><strong> Statistiques </strong></div></td>
+            </tr>                
+        {% for entity in entities %}
+            <tr>  
+				<td><div align="center">{{ entity.nom }} {{ entity.prenom }}</div></td>	
+				<td><div align="center">{{ entity.NomProj }} </div></td>	
+				<td><div align="center">{{ entity.libelle }} </div></td>					
+				<td><div align="center">{% if entity.dated %}{{ entity.dated|date('Y-m-d') }}{% endif %}</div></td>
+				<td><div align="center">{% if entity.datef %}{{ entity.datef|date('Y-m-d') }}{% endif %}</div></td>                
+				<td><div align="center">{% if entity.date %}{{ entity.date|date('Y-m-d') }}{% endif %}  </div></td>
+				<td><div align="center">{{ entity.duree }}   </div></td>
+				<td><div align="center">{{ entity.remarque }}</div></td>
+				<td><div align="center">
+				<a href="{{ path('GCNAFNAFBundle_cra_statistic',{'ids': entity.IDuser,'idp': entity.IDProj} ) }}"><img src="{{ asset('bundles/gcnafnaf/images/statistics.png')}}" title="Statistiques du projet"></a>
+				</div></td>				
+            </tr>
+        {% endfor %}        
+    </table>	
+	
+{% else %}<br/><img src="{{ asset('bundles/gcnafnaf/images/info.jpg') }}" width="20" height="20"> La liste des CRA est vide! <br/>		  
+{% endif %}	 		
+  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+  
+  <section id="documenter_cover">
+	  <h1><img src="{{ asset('bundles/gcnafnaf/images/AdminIcon.gif') }}" width="" height="">Espace Admin - Bienvenue<font color="#999999"> {% if name %}{{ name }} {% endif %}{% if prenom %}{{ prenom }}{% endif %}</font></h1>
+	  <h2>Suivi en ligne des rapports d'activités des salariés NAF</h2>
+	  <hr />  
+	  <ul>
+		<li>Norsysafrique</li>
+		<li>Contact : Tariq Zidi</li>
+		<li>Email : directionnaf@norsys.fr</li>
+		<li>Fax : (+212)5 24 30 79 73</li>
+	  </ul>  
+	  <p>Adresse : Sidi Abbad I, villa n°38 - 40000 Marrakech</p>
+  </section>
+
+{% endblock %}

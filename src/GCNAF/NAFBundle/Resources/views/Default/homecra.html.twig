@@ -1,0 +1,29 @@
+{% extends 'GCNAFNAFBundle::layoutCRA.html.twig' %}
+{% block menu %}
+		
+<ol id="documenter_nav">
+<li><a class="current" href="#documenter_cover"><img src="{{ asset('bundles/gcnafnaf/images/icon_home.gif') }}">  Accueil</a></li>
+<li><a href="{{ path('GCNAFNAFBundle_admin_listeTaches')}}"><img src="{{ asset('bundles/gcnafnaf/images/ib_inventory_icon.gif') }}">  Tâches des projets</a></li>
+<li><a href="{{ path('GCNAFNAFBundle_admin_listeCRA')}}"><img src="{{ asset('bundles/gcnafnaf/images/cra1.gif') }}">  CRA-Suivi des activités</a></li>
+<li><a href="{{ path('GCNAFNAFBundle_demandes_conges')}}"><img src="{{ asset('bundles/gcnafnaf/images/calendar_icon.gif') }}" width="20" height="15">   Gestion Congés</a></li>
+<li><a href="{{ path('GCNAFNAFBundle_goout')}}"><img src="{{ asset('bundles/gcnafnaf/images/icon-exit.gif') }}" width="19" height="18">  Déconnexion</a></li>	
+</ol>
+
+{% endblock %}
+
+{% block section %}
+
+<section id="documenter_cover">
+  <h1><img src="{{ asset('bundles/gcnafnaf/images/AdminIcon.gif') }}" width="" height="">Espace Admin - Bienvenue<font color="#999999"> {% if name %}{{ name }} {% endif %}{% if prenom %}{{ prenom }}{% endif %}</font></h1>
+  <h2>Suivi en ligne des rapports d'activités des salariés NAF</h2>
+  <hr />  
+  <ul>
+    <li>Norsysafrique</li>
+    <li>Contact : Tariq Zidi</li>
+    <li>Email : directionnaf@norsys.fr</li>
+    <li>Fax : (+212)5 24 30 79 73</li>
+  </ul>  
+  <p>Adresse : Sidi Abbad I, villa n°38 - 40000 Marrakech</p>
+</section>
+
+{% endblock %}
